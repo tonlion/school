@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="lightlue">#3AAFE8</color>
+    <color name="darklue">#1583c1</color>
+    <color name="write">#fff</color>
+    <color name="lightgrey">#ccc</color>
+    <color name="darkgrey">#999</color>
+    <color name="blackgrey">#555</color>
+    <color name="black">#000</color>
+</resources>
