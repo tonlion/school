@@ -6,6 +6,7 @@ import com.example.entity.Topic;
 import com.example.school.NoticeDetailsActivity;
 import com.example.school.R;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -71,6 +72,8 @@ public class TopicListAdapter extends BaseAdapter {
 			}
 		});
 		convertView.setBackgroundResource(R.drawable.backgroud);
+		((Activity) context).overridePendingTransition(R.anim.rignt_in,
+				R.anim.left_out);
 		return convertView;
 	}
 

@@ -6,6 +6,7 @@ import com.example.entity.Notice;
 import com.example.school.NoticeListActivity;
 import com.example.school.R;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -75,6 +76,8 @@ public class NoticeListAdapter extends BaseAdapter {
 			}
 		});
 		convertView.setBackgroundResource(R.drawable.backgroud);
+		((Activity) mContext).overridePendingTransition(R.anim.rignt_in,
+				R.anim.left_out);
 		return convertView;
 	}
 

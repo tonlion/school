@@ -27,13 +27,13 @@ public final class R {
 		public static final int ic_launcher = 0x7f02001a;
 	}
 	public static final class id {
-		public static final int fullscreen = 0x7f040003;
-		public static final int left = 0x7f040000;
-		public static final int margin = 0x7f040002;
-		public static final int none = 0x7f040004;
-		public static final int right = 0x7f040001;
-		public static final int selected_view = 0x7f040005;
-		public static final int slidingmenumain = 0x7f04001a;
+		public static final int fullscreen = 0x7f050003;
+		public static final int left = 0x7f050000;
+		public static final int margin = 0x7f050002;
+		public static final int none = 0x7f050004;
+		public static final int right = 0x7f050001;
+		public static final int selected_view = 0x7f050005;
+		public static final int slidingmenumain = 0x7f05001a;
 	}
 	public static final class layout {
 		public static final int slidingmenumain = 0x7f03000a;

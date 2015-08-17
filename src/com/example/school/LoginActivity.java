@@ -21,4 +21,5 @@ public class LoginActivity extends Activity implements OnClickListener {
 	public void onClick(View v) {
 		startActivity(new Intent(this,MainActivity.class));
 	}
+	
 }
