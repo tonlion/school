@@ -24,7 +24,7 @@ public final class R {
 		public static final int viewBehind = 0x7f010002;
 	}
 	public static final class drawable {
-		public static final int ic_launcher = 0x7f020019;
+		public static final int ic_launcher = 0x7f02001a;
 	}
 	public static final class id {
 		public static final int fullscreen = 0x7f040003;

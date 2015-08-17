@@ -74,6 +74,7 @@ public class NoticeListAdapter extends BaseAdapter {
 						NoticeListActivity.class));
 			}
 		});
+		convertView.setBackgroundResource(R.drawable.backgroud);
 		return convertView;
 	}
 

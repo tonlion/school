@@ -70,6 +70,7 @@ public class TopicListAdapter extends BaseAdapter {
 						NoticeDetailsActivity.class));
 			}
 		});
+		convertView.setBackgroundResource(R.drawable.backgroud);
 		return convertView;
 	}
 
