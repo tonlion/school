@@ -10,8 +10,11 @@ package com.example.school;
 public final class R {
     public static final class anim {
         public static final int left_out=0x7f040000;
-        public static final int out=0x7f040001;
-        public static final int rignt_in=0x7f040002;
+        public static final int rignt_in=0x7f040001;
+        public static final int slide_in_from_bottom=0x7f040002;
+        public static final int slide_in_from_top=0x7f040003;
+        public static final int slide_out_to_bottom=0x7f040004;
+        public static final int slide_out_to_top=0x7f040005;
     }
     public static final class attr {
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
@@ -23,7 +26,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int behindOffset=0x7f010003;
+        public static final int behindOffset=0x7f010021;
         /** <p>Must be a floating point value, such as "<code>1.2</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -31,7 +34,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int behindScrollScale=0x7f010005;
+        public static final int behindScrollScale=0x7f010023;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -41,7 +44,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int behindWidth=0x7f010004;
+        public static final int behindWidth=0x7f010022;
         /** <p>Must be a floating point value, such as "<code>1.2</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -49,7 +52,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int fadeDegree=0x7f01000b;
+        public static final int fadeDegree=0x7f010029;
         /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
@@ -57,7 +60,7 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int fadeEnabled=0x7f01000a;
+        public static final int fadeEnabled=0x7f010028;
         /** <p>Must be one of the following constant values.</p>
 <table>
 <colgroup align="left" />
@@ -68,23 +71,16 @@ containing a value of this type.
 <tr><td><code>right</code></td><td>1</td><td></td></tr>
 </table>
          */
-        public static final int mode=0x7f010000;
-        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-         */
-        public static final int selectorDrawable=0x7f01000d;
-        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+        public static final int mode=0x7f01001e;
+        /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
 <p>This may also be a reference to a resource (in the form
 "<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
 theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int selectorEnabled=0x7f01000c;
-        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
-or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
-         */
-        public static final int shadowDrawable=0x7f010008;
+        public static final int pstsDividerColor=0x7f010002;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -94,7 +90,245 @@ theme attribute (in the form
 "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
 containing a value of this type.
          */
-        public static final int shadowWidth=0x7f010009;
+        public static final int pstsDividerPadding=0x7f010005;
+        /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int pstsIndicatorColor=0x7f010000;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int pstsIndicatorHeight=0x7f010003;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int pstsScrollOffset=0x7f010007;
+        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int pstsShouldExpand=0x7f010009;
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int pstsTabBackground=0x7f010008;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int pstsTabPaddingLeftRight=0x7f010006;
+        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int pstsTextAllCaps=0x7f01000a;
+        /** <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int pstsUnderlineColor=0x7f010001;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int pstsUnderlineHeight=0x7f010004;
+        /**  BELOW HERE ARE DEPRECEATED. DO NOT USE. 
+         <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+         */
+        public static final int ptrAdapterViewBackground=0x7f01001b;
+        /**  Style of Animation should be used displayed when pulling. 
+         <p>Must be one or more (separated by '|') of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>rotate</code></td><td>0x0</td><td></td></tr>
+<tr><td><code>flip</code></td><td>0x1</td><td></td></tr>
+</table>
+         */
+        public static final int ptrAnimationStyle=0x7f010017;
+        /**  Drawable to use as Loading Indicator. Changes both Header and Footer. 
+         <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int ptrDrawable=0x7f010011;
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int ptrDrawableBottom=0x7f01001d;
+        /**  Drawable to use as Loading Indicator in the Footer View. Overrides value set in ptrDrawable. 
+         <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int ptrDrawableEnd=0x7f010013;
+        /**  Drawable to use as Loading Indicator in the Header View. Overrides value set in ptrDrawable. 
+         <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int ptrDrawableStart=0x7f010012;
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int ptrDrawableTop=0x7f01001c;
+        /**  A drawable to use as the background of the Header and Footer Loading Views 
+         <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+         */
+        public static final int ptrHeaderBackground=0x7f01000c;
+        /**  Text Color of the Header and Footer Loading Views Sub Header 
+         <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+         */
+        public static final int ptrHeaderSubTextColor=0x7f01000e;
+        /**  Base text color, typeface, size, and style for Header and Footer Loading Views 
+         <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int ptrHeaderTextAppearance=0x7f010015;
+        /**  Text Color of the Header and Footer Loading Views 
+         <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+         */
+        public static final int ptrHeaderTextColor=0x7f01000d;
+        /** 
+        	Whether PullToRefreshListView has it's extras enabled. This allows the user to be 
+        	able to scroll while refreshing, and behaves better. It acheives this by adding
+        	Header and/or Footer Views to the ListView.
+        
+         <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a boolean value, either "<code>true</code>" or "<code>false</code>".
+         */
+        public static final int ptrListViewExtrasEnabled=0x7f010019;
+        /**  Mode of Pull-to-Refresh that should be used 
+         <p>Must be one or more (separated by '|') of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>disabled</code></td><td>0x0</td><td></td></tr>
+<tr><td><code>pullFromStart</code></td><td>0x1</td><td></td></tr>
+<tr><td><code>pullFromEnd</code></td><td>0x2</td><td></td></tr>
+<tr><td><code>both</code></td><td>0x3</td><td></td></tr>
+<tr><td><code>manualOnly</code></td><td>0x4</td><td></td></tr>
+<tr><td><code>pullDownFromTop</code></td><td>0x1</td><td> These last two are depreacted </td></tr>
+<tr><td><code>pullUpFromBottom</code></td><td>0x2</td><td></td></tr>
+</table>
+         */
+        public static final int ptrMode=0x7f01000f;
+        /**  Whether Android's built-in Over Scroll should be utilised for Pull-to-Refresh. 
+         <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a boolean value, either "<code>true</code>" or "<code>false</code>".
+         */
+        public static final int ptrOverScroll=0x7f010014;
+        /**  A drawable to use as the background of the Refreshable View 
+         <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+         */
+        public static final int ptrRefreshableViewBackground=0x7f01000b;
+        /** 
+        	Whether the Drawable should be continually rotated as you pull. This only
+        	takes effect when using the 'Rotate' Animation Style.
+        
+         <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a boolean value, either "<code>true</code>" or "<code>false</code>".
+         */
+        public static final int ptrRotateDrawableWhilePulling=0x7f01001a;
+        /**  Whether the user can scroll while the View is Refreshing 
+         <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a boolean value, either "<code>true</code>" or "<code>false</code>".
+         */
+        public static final int ptrScrollingWhileRefreshingEnabled=0x7f010018;
+        /**  Whether the Indicator overlay(s) should be used 
+         <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a boolean value, either "<code>true</code>" or "<code>false</code>".
+         */
+        public static final int ptrShowIndicator=0x7f010010;
+        /**  Base text color, typeface, size, and style for Header and Footer Loading Views Sub Header 
+         <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int ptrSubHeaderTextAppearance=0x7f010016;
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int selectorDrawable=0x7f01002b;
+        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int selectorEnabled=0x7f01002a;
+        /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+         */
+        public static final int shadowDrawable=0x7f010026;
+        /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int shadowWidth=0x7f010027;
         /** <p>Must be one of the following constant values.</p>
 <table>
 <colgroup align="left" />
@@ -106,7 +340,7 @@ containing a value of this type.
 <tr><td><code>none</code></td><td>2</td><td></td></tr>
 </table>
          */
-        public static final int touchModeAbove=0x7f010006;
+        public static final int touchModeAbove=0x7f010024;
         /** <p>Must be one of the following constant values.</p>
 <table>
 <colgroup align="left" />
@@ -118,26 +352,28 @@ containing a value of this type.
 <tr><td><code>none</code></td><td>2</td><td></td></tr>
 </table>
          */
-        public static final int touchModeBehind=0x7f010007;
+        public static final int touchModeBehind=0x7f010025;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int viewAbove=0x7f010001;
+        public static final int viewAbove=0x7f01001f;
         /** <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
 or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
          */
-        public static final int viewBehind=0x7f010002;
+        public static final int viewBehind=0x7f010020;
     }
     public static final class color {
-        public static final int back=0x7f060007;
-        public static final int black=0x7f060006;
-        public static final int blackgrey=0x7f060005;
-        public static final int darkgrey=0x7f060004;
-        public static final int darklue=0x7f060001;
-        public static final int lightgrey=0x7f060003;
-        public static final int lightlue=0x7f060000;
-        public static final int slide_onpressed=0x7f060008;
-        public static final int write=0x7f060002;
+        public static final int back=0x7f050008;
+        public static final int background_tab_pressed=0x7f050000;
+        public static final int black=0x7f050007;
+        public static final int blackgrey=0x7f050006;
+        public static final int darkgrey=0x7f050005;
+        public static final int darklue=0x7f050002;
+        public static final int lightgrey=0x7f050004;
+        public static final int lightlue=0x7f050001;
+        public static final int radio_onchecked=0x7f050009;
+        public static final int slide_onpressed=0x7f05000a;
+        public static final int write=0x7f050003;
     }
     public static final class dimen {
         /**  Default screen margins, per the Android Design guidelines. 
@@ -146,121 +382,184 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
          screen margins) for sw720dp devices (e.g. 10" tablets) in landscape here.
     
          */
-        public static final int activity_horizontal_margin=0x7f070000;
-        public static final int activity_margin_left=0x7f070003;
-        public static final int activity_margin_right=0x7f070002;
-        public static final int activity_vertical_margin=0x7f070001;
-        public static final int border_radius_big=0x7f070005;
-        public static final int border_radius_small=0x7f070004;
-        public static final int border_width=0x7f070006;
+        public static final int activity_horizontal_margin=0x7f070005;
+        public static final int activity_margin_left=0x7f070008;
+        public static final int activity_margin_right=0x7f070007;
+        public static final int activity_vertical_margin=0x7f070006;
+        public static final int border_radius_big=0x7f07000a;
+        public static final int border_radius_small=0x7f070009;
+        public static final int border_width=0x7f07000b;
+        public static final int header_footer_left_right_padding=0x7f070003;
+        public static final int header_footer_top_bottom_padding=0x7f070004;
+        public static final int indicator_corner_radius=0x7f070001;
+        public static final int indicator_internal_padding=0x7f070002;
+        public static final int indicator_right_padding=0x7f070000;
     }
     public static final class drawable {
         public static final int after_onselected=0x7f020000;
         public static final int backgroud=0x7f020001;
-        public static final int before_onpress=0x7f020002;
-        public static final int border_bottom_line=0x7f020003;
-        public static final int cc_arrow_right=0x7f020004;
-        public static final int cc_contact_muitl=0x7f020005;
-        public static final int cc_contact_signle=0x7f020006;
-        public static final int cc_contacts=0x7f020007;
-        public static final int cc_default_news_img=0x7f020008;
-        public static final int cc_default_news_img_fail=0x7f020009;
-        public static final int cc_imp_star=0x7f02000a;
-        public static final int cc_new_msg=0x7f02000b;
-        public static final int cc_org_contact=0x7f02000c;
-        public static final int cc_school_active=0x7f02000d;
-        public static final int cc_school_emp=0x7f02000e;
-        public static final int cc_school_info=0x7f02000f;
-        public static final int cc_school_kaoyan=0x7f020010;
-        public static final int cc_school_sxyl=0x7f020011;
-        public static final int cc_school_tool=0x7f020012;
-        public static final int cc_unread_msg=0x7f020013;
-        public static final int cc_user=0x7f020014;
-        public static final int checked_background=0x7f020015;
-        public static final int est=0x7f020016;
-        public static final int esu=0x7f020017;
-        public static final int head1=0x7f020018;
-        public static final int head2=0x7f020019;
-        public static final int ic_launcher=0x7f02001a;
-        public static final int icon_switch_off=0x7f02001b;
-        public static final int icon_switch_on=0x7f02001c;
-        public static final int im_list_item_arrow=0x7f02001d;
-        public static final int item_before_onfocus=0x7f02001e;
-        public static final int lit=0x7f02001f;
-        public static final int login_background=0x7f020020;
-        public static final int login_btn_background=0x7f020021;
-        public static final int login_edit_after_onchecked=0x7f020022;
-        public static final int login_edit_before_onchecked=0x7f020023;
-        public static final int login_edit_onchecked=0x7f020024;
-        public static final int login_password_white=0x7f020025;
-        public static final int login_username_white=0x7f020026;
-        public static final int logo=0x7f020027;
-        public static final int search=0x7f020028;
-        public static final int skin_searchbar_icon=0x7f020029;
-        public static final int title=0x7f02002a;
-        public static final int tt_chatting_biaoqing_btn_normal=0x7f02002b;
-        public static final int user_infor_list_divider=0x7f02002c;
-        public static final int yuanjiao=0x7f02002d;
+        public static final int background_tab=0x7f020002;
+        public static final int before_onpress=0x7f020003;
+        public static final int border_bottom_line=0x7f020004;
+        public static final int cc_arrow_right=0x7f020005;
+        public static final int cc_contact_muitl=0x7f020006;
+        public static final int cc_contact_signle=0x7f020007;
+        public static final int cc_contacts=0x7f020008;
+        public static final int cc_default_news_img=0x7f020009;
+        public static final int cc_default_news_img_fail=0x7f02000a;
+        public static final int cc_imp_star=0x7f02000b;
+        public static final int cc_new_msg=0x7f02000c;
+        public static final int cc_org_contact=0x7f02000d;
+        public static final int cc_school_active=0x7f02000e;
+        public static final int cc_school_emp=0x7f02000f;
+        public static final int cc_school_info=0x7f020010;
+        public static final int cc_school_kaoyan=0x7f020011;
+        public static final int cc_school_sxyl=0x7f020012;
+        public static final int cc_school_tool=0x7f020013;
+        public static final int cc_unread_msg=0x7f020014;
+        public static final int cc_user=0x7f020015;
+        public static final int checked_background=0x7f020016;
+        public static final int default_ptr_flip=0x7f020017;
+        public static final int default_ptr_rotate=0x7f020018;
+        public static final int est=0x7f020019;
+        public static final int esu=0x7f02001a;
+        public static final int head1=0x7f02001b;
+        public static final int head2=0x7f02001c;
+        public static final int ic_launcher=0x7f02001d;
+        public static final int icon_switch_off=0x7f02001e;
+        public static final int icon_switch_on=0x7f02001f;
+        public static final int im_list_item_arrow=0x7f020020;
+        public static final int indicator_arrow=0x7f020021;
+        public static final int indicator_bg_bottom=0x7f020022;
+        public static final int indicator_bg_top=0x7f020023;
+        public static final int item_before_onfocus=0x7f020024;
+        public static final int lit=0x7f020025;
+        public static final int login_background=0x7f020026;
+        public static final int login_btn_background=0x7f020027;
+        public static final int login_edit_after_onchecked=0x7f020028;
+        public static final int login_edit_before_onchecked=0x7f020029;
+        public static final int login_edit_onchecked=0x7f02002a;
+        public static final int login_password_white=0x7f02002b;
+        public static final int login_username_white=0x7f02002c;
+        public static final int logo=0x7f02002d;
+        public static final int search=0x7f02002e;
+        public static final int skin_searchbar_icon=0x7f02002f;
+        public static final int title=0x7f020030;
+        public static final int tt_chatting_biaoqing_btn_normal=0x7f020031;
+        public static final int user_infor_list_divider=0x7f020032;
+        public static final int yuanjiao=0x7f020033;
     }
     public static final class id {
-        public static final int action_settings=0x7f05001b;
-        public static final int container=0x7f050016;
-        public static final int fullscreen=0x7f050003;
-        public static final int left=0x7f050000;
-        public static final int linearcontenter=0x7f050008;
-        public static final int login_btn=0x7f050009;
-        public static final int login_name=0x7f050006;
-        public static final int login_pass=0x7f050007;
-        public static final int margin=0x7f050002;
-        public static final int more_notice=0x7f050011;
-        public static final int more_topic=0x7f050018;
-        public static final int more_topic_list=0x7f05000b;
-        public static final int none=0x7f050004;
-        public static final int notice_create_time=0x7f05000f;
-        public static final int notice_img=0x7f05000d;
-        public static final int notice_list=0x7f05000a;
-        public static final int notice_title=0x7f05000e;
-        public static final int right=0x7f050001;
-        public static final int selected_view=0x7f050005;
-        public static final int slidingmenumain=0x7f05001a;
-        public static final int title_pager=0x7f050015;
-        public static final int today_notice=0x7f050010;
-        public static final int topic_details=0x7f05000c;
-        public static final int topic_item_con=0x7f050014;
-        public static final int topic_item_pic=0x7f050012;
-        public static final int topic_item_title=0x7f050013;
-        public static final int topic_list=0x7f050019;
-        public static final int topic_title=0x7f050017;
+        public static final int action_settings=0x7f06003a;
+        public static final int both=0x7f060003;
+        public static final int container=0x7f06002f;
+        public static final int disabled=0x7f060000;
+        public static final int fl_inner=0x7f060034;
+        public static final int flip=0x7f060008;
+        public static final int fullscreen=0x7f06000f;
+        public static final int gridview=0x7f060009;
+        public static final int l1=0x7f060022;
+        public static final int l2=0x7f060023;
+        public static final int l3=0x7f060024;
+        public static final int l4=0x7f060025;
+        public static final int l5=0x7f060026;
+        public static final int l6=0x7f060027;
+        public static final int l7=0x7f060028;
+        public static final int left=0x7f06000c;
+        public static final int linearcontenter=0x7f060014;
+        public static final int listview=0x7f060033;
+        public static final int login_btn=0x7f060015;
+        public static final int login_name=0x7f060012;
+        public static final int login_pass=0x7f060013;
+        public static final int main_pager_show=0x7f060017;
+        public static final int main_title_show=0x7f060016;
+        public static final int manualOnly=0x7f060004;
+        public static final int margin=0x7f06000e;
+        public static final int more_notice=0x7f06002a;
+        public static final int more_topic=0x7f060031;
+        public static final int more_topic_list=0x7f060019;
+        public static final int none=0x7f060010;
+        public static final int notice_create_time=0x7f060021;
+        public static final int notice_img=0x7f06001f;
+        public static final int notice_list=0x7f060018;
+        public static final int notice_title=0x7f060020;
+        public static final int person_info=0x7f06001a;
+        public static final int pheader=0x7f06001b;
+        public static final int pmess=0x7f06001d;
+        public static final int pname=0x7f06001c;
+        public static final int pullDownFromTop=0x7f060005;
+        public static final int pullFromEnd=0x7f060002;
+        public static final int pullFromStart=0x7f060001;
+        public static final int pullUpFromBottom=0x7f060006;
+        public static final int pull_to_refresh_image=0x7f060035;
+        public static final int pull_to_refresh_progress=0x7f060036;
+        public static final int pull_to_refresh_sub_text=0x7f060038;
+        public static final int pull_to_refresh_text=0x7f060037;
+        public static final int right=0x7f06000d;
+        public static final int rotate=0x7f060007;
+        public static final int scrollview=0x7f06000b;
+        public static final int selected_view=0x7f060011;
+        public static final int slidingmenumain=0x7f060039;
+        public static final int title_pager=0x7f06002e;
+        public static final int today_notice=0x7f060029;
+        public static final int topic_details=0x7f06001e;
+        public static final int topic_item_con=0x7f06002d;
+        public static final int topic_item_pic=0x7f06002b;
+        public static final int topic_item_title=0x7f06002c;
+        public static final int topic_list=0x7f060032;
+        public static final int topic_title=0x7f060030;
+        public static final int webview=0x7f06000a;
     }
     public static final class layout {
         public static final int activity_login=0x7f030000;
-        public static final int activity_main_show=0x7f030001;
-        public static final int activity_more_topic_list=0x7f030002;
-        public static final int activity_topic_list=0x7f030003;
-        public static final int layout_notice_detail=0x7f030004;
-        public static final int layout_notice_list=0x7f030005;
-        public static final int layout_slide_menu=0x7f030006;
-        public static final int layout_title_name=0x7f030007;
-        public static final int layout_topic_item=0x7f030008;
-        public static final int layout_viewpager=0x7f030009;
-        public static final int slidingmenumain=0x7f03000a;
+        public static final int activity_main_list_show=0x7f030001;
+        public static final int activity_main_show=0x7f030002;
+        public static final int activity_more_topic_list=0x7f030003;
+        public static final int activity_person_info=0x7f030004;
+        public static final int activity_setting_info=0x7f030005;
+        public static final int activity_topic_list=0x7f030006;
+        public static final int layout_notice_detail=0x7f030007;
+        public static final int layout_notice_list=0x7f030008;
+        public static final int layout_slide_menu=0x7f030009;
+        public static final int layout_title_name=0x7f03000a;
+        public static final int layout_topic_item=0x7f03000b;
+        public static final int layout_viewpager=0x7f03000c;
+        public static final int list_view=0x7f03000d;
+        public static final int pull_to_refresh_header_horizontal=0x7f03000e;
+        public static final int pull_to_refresh_header_vertical=0x7f03000f;
+        public static final int radio_button=0x7f030010;
+        public static final int slidingmenumain=0x7f030011;
     }
     public static final class menu {
         public static final int main=0x7f0a0000;
     }
     public static final class string {
-        public static final int action_settings=0x7f080001;
-        public static final int app_name=0x7f080000;
-        public static final int hello_world=0x7f080002;
-        public static final int login_btn=0x7f080007;
-        public static final int login_myself=0x7f080006;
-        public static final int login_name=0x7f080003;
-        public static final int login_pass=0x7f080004;
-        public static final int more_notice=0x7f08000b;
-        public static final int more_topic=0x7f080009;
-        public static final int rem_pass=0x7f080005;
-        public static final int today_notice=0x7f08000a;
-        public static final int topic=0x7f080008;
+        public static final int action_settings=0x7f080007;
+        public static final int app_name=0x7f080006;
+        public static final int change_pass=0x7f080013;
+        public static final int hello_world=0x7f080008;
+        public static final int login_btn=0x7f08000d;
+        public static final int login_myself=0x7f08000c;
+        public static final int login_name=0x7f080009;
+        public static final int login_pass=0x7f08000a;
+        public static final int more_notice=0x7f080011;
+        public static final int more_topic=0x7f08000f;
+        public static final int person_collection=0x7f080014;
+        /**  Just use standard Pull Down String when pulling up. These can be set for languages which require it 
+ Just use standard Pull Down String when pulling up. These can be set for languages which require it 
+         */
+        public static final int pull_to_refresh_from_bottom_pull_label=0x7f080003;
+        public static final int pull_to_refresh_from_bottom_refreshing_label=0x7f080005;
+        public static final int pull_to_refresh_from_bottom_release_label=0x7f080004;
+        public static final int pull_to_refresh_pull_label=0x7f080000;
+        public static final int pull_to_refresh_refreshing_label=0x7f080002;
+        public static final int pull_to_refresh_release_label=0x7f080001;
+        public static final int rem_pass=0x7f08000b;
+        public static final int self_login=0x7f080016;
+        public static final int today_notice=0x7f080010;
+        public static final int topic=0x7f08000e;
+        public static final int user_out=0x7f080012;
+        public static final int versions=0x7f080015;
     }
     public static final class style {
         /** 
@@ -271,11 +570,13 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 
 
 
+
     
 
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
             backward-compatibility can go here.
+
 
 
 
@@ -299,12 +600,529 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
  All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f090001;
-        public static final int alpha=0x7f090005;
         public static final int barcolor=0x7f090004;
         public static final int font_style=0x7f090003;
         public static final int login_margin=0x7f090002;
     }
     public static final class styleable {
+        /** Attributes that can be used with a PagerSlidingTabStrip.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #PagerSlidingTabStrip_pstsDividerColor com.example.school:pstsDividerColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #PagerSlidingTabStrip_pstsDividerPadding com.example.school:pstsDividerPadding}</code></td><td></td></tr>
+           <tr><td><code>{@link #PagerSlidingTabStrip_pstsIndicatorColor com.example.school:pstsIndicatorColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #PagerSlidingTabStrip_pstsIndicatorHeight com.example.school:pstsIndicatorHeight}</code></td><td></td></tr>
+           <tr><td><code>{@link #PagerSlidingTabStrip_pstsScrollOffset com.example.school:pstsScrollOffset}</code></td><td></td></tr>
+           <tr><td><code>{@link #PagerSlidingTabStrip_pstsShouldExpand com.example.school:pstsShouldExpand}</code></td><td></td></tr>
+           <tr><td><code>{@link #PagerSlidingTabStrip_pstsTabBackground com.example.school:pstsTabBackground}</code></td><td></td></tr>
+           <tr><td><code>{@link #PagerSlidingTabStrip_pstsTabPaddingLeftRight com.example.school:pstsTabPaddingLeftRight}</code></td><td></td></tr>
+           <tr><td><code>{@link #PagerSlidingTabStrip_pstsTextAllCaps com.example.school:pstsTextAllCaps}</code></td><td></td></tr>
+           <tr><td><code>{@link #PagerSlidingTabStrip_pstsUnderlineColor com.example.school:pstsUnderlineColor}</code></td><td></td></tr>
+           <tr><td><code>{@link #PagerSlidingTabStrip_pstsUnderlineHeight com.example.school:pstsUnderlineHeight}</code></td><td></td></tr>
+           </table>
+           @see #PagerSlidingTabStrip_pstsDividerColor
+           @see #PagerSlidingTabStrip_pstsDividerPadding
+           @see #PagerSlidingTabStrip_pstsIndicatorColor
+           @see #PagerSlidingTabStrip_pstsIndicatorHeight
+           @see #PagerSlidingTabStrip_pstsScrollOffset
+           @see #PagerSlidingTabStrip_pstsShouldExpand
+           @see #PagerSlidingTabStrip_pstsTabBackground
+           @see #PagerSlidingTabStrip_pstsTabPaddingLeftRight
+           @see #PagerSlidingTabStrip_pstsTextAllCaps
+           @see #PagerSlidingTabStrip_pstsUnderlineColor
+           @see #PagerSlidingTabStrip_pstsUnderlineHeight
+         */
+        public static final int[] PagerSlidingTabStrip = {
+            0x7f010000, 0x7f010001, 0x7f010002, 0x7f010003,
+            0x7f010004, 0x7f010005, 0x7f010006, 0x7f010007,
+            0x7f010008, 0x7f010009, 0x7f01000a
+        };
+        /**
+          <p>This symbol is the offset where the {@link com.example.school.R.attr#pstsDividerColor}
+          attribute's value can be found in the {@link #PagerSlidingTabStrip} array.
+
+
+          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.example.school:pstsDividerColor
+        */
+        public static final int PagerSlidingTabStrip_pstsDividerColor = 2;
+        /**
+          <p>This symbol is the offset where the {@link com.example.school.R.attr#pstsDividerPadding}
+          attribute's value can be found in the {@link #PagerSlidingTabStrip} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.example.school:pstsDividerPadding
+        */
+        public static final int PagerSlidingTabStrip_pstsDividerPadding = 5;
+        /**
+          <p>This symbol is the offset where the {@link com.example.school.R.attr#pstsIndicatorColor}
+          attribute's value can be found in the {@link #PagerSlidingTabStrip} array.
+
+
+          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.example.school:pstsIndicatorColor
+        */
+        public static final int PagerSlidingTabStrip_pstsIndicatorColor = 0;
+        /**
+          <p>This symbol is the offset where the {@link com.example.school.R.attr#pstsIndicatorHeight}
+          attribute's value can be found in the {@link #PagerSlidingTabStrip} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.example.school:pstsIndicatorHeight
+        */
+        public static final int PagerSlidingTabStrip_pstsIndicatorHeight = 3;
+        /**
+          <p>This symbol is the offset where the {@link com.example.school.R.attr#pstsScrollOffset}
+          attribute's value can be found in the {@link #PagerSlidingTabStrip} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.example.school:pstsScrollOffset
+        */
+        public static final int PagerSlidingTabStrip_pstsScrollOffset = 7;
+        /**
+          <p>This symbol is the offset where the {@link com.example.school.R.attr#pstsShouldExpand}
+          attribute's value can be found in the {@link #PagerSlidingTabStrip} array.
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.example.school:pstsShouldExpand
+        */
+        public static final int PagerSlidingTabStrip_pstsShouldExpand = 9;
+        /**
+          <p>This symbol is the offset where the {@link com.example.school.R.attr#pstsTabBackground}
+          attribute's value can be found in the {@link #PagerSlidingTabStrip} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name com.example.school:pstsTabBackground
+        */
+        public static final int PagerSlidingTabStrip_pstsTabBackground = 8;
+        /**
+          <p>This symbol is the offset where the {@link com.example.school.R.attr#pstsTabPaddingLeftRight}
+          attribute's value can be found in the {@link #PagerSlidingTabStrip} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.example.school:pstsTabPaddingLeftRight
+        */
+        public static final int PagerSlidingTabStrip_pstsTabPaddingLeftRight = 6;
+        /**
+          <p>This symbol is the offset where the {@link com.example.school.R.attr#pstsTextAllCaps}
+          attribute's value can be found in the {@link #PagerSlidingTabStrip} array.
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.example.school:pstsTextAllCaps
+        */
+        public static final int PagerSlidingTabStrip_pstsTextAllCaps = 10;
+        /**
+          <p>This symbol is the offset where the {@link com.example.school.R.attr#pstsUnderlineColor}
+          attribute's value can be found in the {@link #PagerSlidingTabStrip} array.
+
+
+          <p>Must be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.example.school:pstsUnderlineColor
+        */
+        public static final int PagerSlidingTabStrip_pstsUnderlineColor = 1;
+        /**
+          <p>This symbol is the offset where the {@link com.example.school.R.attr#pstsUnderlineHeight}
+          attribute's value can be found in the {@link #PagerSlidingTabStrip} array.
+
+
+          <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
+Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
+in (inches), mm (millimeters).
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.example.school:pstsUnderlineHeight
+        */
+        public static final int PagerSlidingTabStrip_pstsUnderlineHeight = 4;
+        /** Attributes that can be used with a PullToRefresh.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #PullToRefresh_ptrAdapterViewBackground com.example.school:ptrAdapterViewBackground}</code></td><td> BELOW HERE ARE DEPRECEATED.</td></tr>
+           <tr><td><code>{@link #PullToRefresh_ptrAnimationStyle com.example.school:ptrAnimationStyle}</code></td><td> Style of Animation should be used displayed when pulling.</td></tr>
+           <tr><td><code>{@link #PullToRefresh_ptrDrawable com.example.school:ptrDrawable}</code></td><td> Drawable to use as Loading Indicator.</td></tr>
+           <tr><td><code>{@link #PullToRefresh_ptrDrawableBottom com.example.school:ptrDrawableBottom}</code></td><td></td></tr>
+           <tr><td><code>{@link #PullToRefresh_ptrDrawableEnd com.example.school:ptrDrawableEnd}</code></td><td> Drawable to use as Loading Indicator in the Footer View.</td></tr>
+           <tr><td><code>{@link #PullToRefresh_ptrDrawableStart com.example.school:ptrDrawableStart}</code></td><td> Drawable to use as Loading Indicator in the Header View.</td></tr>
+           <tr><td><code>{@link #PullToRefresh_ptrDrawableTop com.example.school:ptrDrawableTop}</code></td><td></td></tr>
+           <tr><td><code>{@link #PullToRefresh_ptrHeaderBackground com.example.school:ptrHeaderBackground}</code></td><td> A drawable to use as the background of the Header and Footer Loading Views </td></tr>
+           <tr><td><code>{@link #PullToRefresh_ptrHeaderSubTextColor com.example.school:ptrHeaderSubTextColor}</code></td><td> Text Color of the Header and Footer Loading Views Sub Header </td></tr>
+           <tr><td><code>{@link #PullToRefresh_ptrHeaderTextAppearance com.example.school:ptrHeaderTextAppearance}</code></td><td> Base text color, typeface, size, and style for Header and Footer Loading Views </td></tr>
+           <tr><td><code>{@link #PullToRefresh_ptrHeaderTextColor com.example.school:ptrHeaderTextColor}</code></td><td> Text Color of the Header and Footer Loading Views </td></tr>
+           <tr><td><code>{@link #PullToRefresh_ptrListViewExtrasEnabled com.example.school:ptrListViewExtrasEnabled}</code></td><td>
+        	Whether PullToRefreshListView has it's extras enabled.</td></tr>
+           <tr><td><code>{@link #PullToRefresh_ptrMode com.example.school:ptrMode}</code></td><td> Mode of Pull-to-Refresh that should be used </td></tr>
+           <tr><td><code>{@link #PullToRefresh_ptrOverScroll com.example.school:ptrOverScroll}</code></td><td> Whether Android's built-in Over Scroll should be utilised for Pull-to-Refresh.</td></tr>
+           <tr><td><code>{@link #PullToRefresh_ptrRefreshableViewBackground com.example.school:ptrRefreshableViewBackground}</code></td><td> A drawable to use as the background of the Refreshable View </td></tr>
+           <tr><td><code>{@link #PullToRefresh_ptrRotateDrawableWhilePulling com.example.school:ptrRotateDrawableWhilePulling}</code></td><td>
+        	Whether the Drawable should be continually rotated as you pull.</td></tr>
+           <tr><td><code>{@link #PullToRefresh_ptrScrollingWhileRefreshingEnabled com.example.school:ptrScrollingWhileRefreshingEnabled}</code></td><td> Whether the user can scroll while the View is Refreshing </td></tr>
+           <tr><td><code>{@link #PullToRefresh_ptrShowIndicator com.example.school:ptrShowIndicator}</code></td><td> Whether the Indicator overlay(s) should be used </td></tr>
+           <tr><td><code>{@link #PullToRefresh_ptrSubHeaderTextAppearance com.example.school:ptrSubHeaderTextAppearance}</code></td><td> Base text color, typeface, size, and style for Header and Footer Loading Views Sub Header </td></tr>
+           </table>
+           @see #PullToRefresh_ptrAdapterViewBackground
+           @see #PullToRefresh_ptrAnimationStyle
+           @see #PullToRefresh_ptrDrawable
+           @see #PullToRefresh_ptrDrawableBottom
+           @see #PullToRefresh_ptrDrawableEnd
+           @see #PullToRefresh_ptrDrawableStart
+           @see #PullToRefresh_ptrDrawableTop
+           @see #PullToRefresh_ptrHeaderBackground
+           @see #PullToRefresh_ptrHeaderSubTextColor
+           @see #PullToRefresh_ptrHeaderTextAppearance
+           @see #PullToRefresh_ptrHeaderTextColor
+           @see #PullToRefresh_ptrListViewExtrasEnabled
+           @see #PullToRefresh_ptrMode
+           @see #PullToRefresh_ptrOverScroll
+           @see #PullToRefresh_ptrRefreshableViewBackground
+           @see #PullToRefresh_ptrRotateDrawableWhilePulling
+           @see #PullToRefresh_ptrScrollingWhileRefreshingEnabled
+           @see #PullToRefresh_ptrShowIndicator
+           @see #PullToRefresh_ptrSubHeaderTextAppearance
+         */
+        public static final int[] PullToRefresh = {
+            0x7f01000b, 0x7f01000c, 0x7f01000d, 0x7f01000e,
+            0x7f01000f, 0x7f010010, 0x7f010011, 0x7f010012,
+            0x7f010013, 0x7f010014, 0x7f010015, 0x7f010016,
+            0x7f010017, 0x7f010018, 0x7f010019, 0x7f01001a,
+            0x7f01001b, 0x7f01001c, 0x7f01001d
+        };
+        /**
+          <p>
+          @attr description
+           BELOW HERE ARE DEPRECEATED. DO NOT USE. 
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+          <p>This is a private symbol.
+          @attr name com.example.school:ptrAdapterViewBackground
+        */
+        public static final int PullToRefresh_ptrAdapterViewBackground = 16;
+        /**
+          <p>
+          @attr description
+           Style of Animation should be used displayed when pulling. 
+
+
+          <p>Must be one or more (separated by '|') of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>rotate</code></td><td>0x0</td><td></td></tr>
+<tr><td><code>flip</code></td><td>0x1</td><td></td></tr>
+</table>
+          <p>This is a private symbol.
+          @attr name com.example.school:ptrAnimationStyle
+        */
+        public static final int PullToRefresh_ptrAnimationStyle = 12;
+        /**
+          <p>
+          @attr description
+           Drawable to use as Loading Indicator. Changes both Header and Footer. 
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          <p>This is a private symbol.
+          @attr name com.example.school:ptrDrawable
+        */
+        public static final int PullToRefresh_ptrDrawable = 6;
+        /**
+          <p>This symbol is the offset where the {@link com.example.school.R.attr#ptrDrawableBottom}
+          attribute's value can be found in the {@link #PullToRefresh} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name com.example.school:ptrDrawableBottom
+        */
+        public static final int PullToRefresh_ptrDrawableBottom = 18;
+        /**
+          <p>
+          @attr description
+           Drawable to use as Loading Indicator in the Footer View. Overrides value set in ptrDrawable. 
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          <p>This is a private symbol.
+          @attr name com.example.school:ptrDrawableEnd
+        */
+        public static final int PullToRefresh_ptrDrawableEnd = 8;
+        /**
+          <p>
+          @attr description
+           Drawable to use as Loading Indicator in the Header View. Overrides value set in ptrDrawable. 
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          <p>This is a private symbol.
+          @attr name com.example.school:ptrDrawableStart
+        */
+        public static final int PullToRefresh_ptrDrawableStart = 7;
+        /**
+          <p>This symbol is the offset where the {@link com.example.school.R.attr#ptrDrawableTop}
+          attribute's value can be found in the {@link #PullToRefresh} array.
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          @attr name com.example.school:ptrDrawableTop
+        */
+        public static final int PullToRefresh_ptrDrawableTop = 17;
+        /**
+          <p>
+          @attr description
+           A drawable to use as the background of the Header and Footer Loading Views 
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+          <p>This is a private symbol.
+          @attr name com.example.school:ptrHeaderBackground
+        */
+        public static final int PullToRefresh_ptrHeaderBackground = 1;
+        /**
+          <p>
+          @attr description
+           Text Color of the Header and Footer Loading Views Sub Header 
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+          <p>This is a private symbol.
+          @attr name com.example.school:ptrHeaderSubTextColor
+        */
+        public static final int PullToRefresh_ptrHeaderSubTextColor = 3;
+        /**
+          <p>
+          @attr description
+           Base text color, typeface, size, and style for Header and Footer Loading Views 
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          <p>This is a private symbol.
+          @attr name com.example.school:ptrHeaderTextAppearance
+        */
+        public static final int PullToRefresh_ptrHeaderTextAppearance = 10;
+        /**
+          <p>
+          @attr description
+           Text Color of the Header and Footer Loading Views 
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+          <p>This is a private symbol.
+          @attr name com.example.school:ptrHeaderTextColor
+        */
+        public static final int PullToRefresh_ptrHeaderTextColor = 2;
+        /**
+          <p>
+          @attr description
+          
+        	Whether PullToRefreshListView has it's extras enabled. This allows the user to be 
+        	able to scroll while refreshing, and behaves better. It acheives this by adding
+        	Header and/or Footer Views to the ListView.
+        
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a boolean value, either "<code>true</code>" or "<code>false</code>".
+          <p>This is a private symbol.
+          @attr name com.example.school:ptrListViewExtrasEnabled
+        */
+        public static final int PullToRefresh_ptrListViewExtrasEnabled = 14;
+        /**
+          <p>
+          @attr description
+           Mode of Pull-to-Refresh that should be used 
+
+
+          <p>Must be one or more (separated by '|') of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>disabled</code></td><td>0x0</td><td></td></tr>
+<tr><td><code>pullFromStart</code></td><td>0x1</td><td></td></tr>
+<tr><td><code>pullFromEnd</code></td><td>0x2</td><td></td></tr>
+<tr><td><code>both</code></td><td>0x3</td><td></td></tr>
+<tr><td><code>manualOnly</code></td><td>0x4</td><td></td></tr>
+<tr><td><code>pullDownFromTop</code></td><td>0x1</td><td> These last two are depreacted </td></tr>
+<tr><td><code>pullUpFromBottom</code></td><td>0x2</td><td></td></tr>
+</table>
+          <p>This is a private symbol.
+          @attr name com.example.school:ptrMode
+        */
+        public static final int PullToRefresh_ptrMode = 4;
+        /**
+          <p>
+          @attr description
+           Whether Android's built-in Over Scroll should be utilised for Pull-to-Refresh. 
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a boolean value, either "<code>true</code>" or "<code>false</code>".
+          <p>This is a private symbol.
+          @attr name com.example.school:ptrOverScroll
+        */
+        public static final int PullToRefresh_ptrOverScroll = 9;
+        /**
+          <p>
+          @attr description
+           A drawable to use as the background of the Refreshable View 
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a color value, in the form of "<code>#<i>rgb</i></code>", "<code>#<i>argb</i></code>",
+"<code>#<i>rrggbb</i></code>", or "<code>#<i>aarrggbb</i></code>".
+          <p>This is a private symbol.
+          @attr name com.example.school:ptrRefreshableViewBackground
+        */
+        public static final int PullToRefresh_ptrRefreshableViewBackground = 0;
+        /**
+          <p>
+          @attr description
+          
+        	Whether the Drawable should be continually rotated as you pull. This only
+        	takes effect when using the 'Rotate' Animation Style.
+        
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a boolean value, either "<code>true</code>" or "<code>false</code>".
+          <p>This is a private symbol.
+          @attr name com.example.school:ptrRotateDrawableWhilePulling
+        */
+        public static final int PullToRefresh_ptrRotateDrawableWhilePulling = 15;
+        /**
+          <p>
+          @attr description
+           Whether the user can scroll while the View is Refreshing 
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a boolean value, either "<code>true</code>" or "<code>false</code>".
+          <p>This is a private symbol.
+          @attr name com.example.school:ptrScrollingWhileRefreshingEnabled
+        */
+        public static final int PullToRefresh_ptrScrollingWhileRefreshingEnabled = 13;
+        /**
+          <p>
+          @attr description
+           Whether the Indicator overlay(s) should be used 
+
+
+          <p>May be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+<p>May be a boolean value, either "<code>true</code>" or "<code>false</code>".
+          <p>This is a private symbol.
+          @attr name com.example.school:ptrShowIndicator
+        */
+        public static final int PullToRefresh_ptrShowIndicator = 5;
+        /**
+          <p>
+          @attr description
+           Base text color, typeface, size, and style for Header and Footer Loading Views Sub Header 
+
+
+          <p>Must be a reference to another resource, in the form "<code>@[+][<i>package</i>:]<i>type</i>:<i>name</i></code>"
+or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>".
+          <p>This is a private symbol.
+          @attr name com.example.school:ptrSubHeaderTextAppearance
+        */
+        public static final int PullToRefresh_ptrSubHeaderTextAppearance = 11;
         /** Attributes that can be used with a SlidingMenu.
            <p>Includes the following attributes:</p>
            <table>
@@ -342,10 +1160,10 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
            @see #SlidingMenu_viewBehind
          */
         public static final int[] SlidingMenu = {
-            0x7f010000, 0x7f010001, 0x7f010002, 0x7f010003,
-            0x7f010004, 0x7f010005, 0x7f010006, 0x7f010007,
-            0x7f010008, 0x7f010009, 0x7f01000a, 0x7f01000b,
-            0x7f01000c, 0x7f01000d
+            0x7f01001e, 0x7f01001f, 0x7f010020, 0x7f010021,
+            0x7f010022, 0x7f010023, 0x7f010024, 0x7f010025,
+            0x7f010026, 0x7f010027, 0x7f010028, 0x7f010029,
+            0x7f01002a, 0x7f01002b
         };
         /**
           <p>This symbol is the offset where the {@link com.example.school.R.attr#behindOffset}

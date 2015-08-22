@@ -8,7 +8,6 @@ public class Topic {
 
 	public Topic() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Topic(int image, String title, String content) {

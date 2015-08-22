@@ -30,6 +30,12 @@
         </activity>
         <activity android:name="com.example.school.NoticeDetailsActivity" >
         </activity>
+        <activity android:name="com.example.school.PagerListActivity" >
+        </activity>
+        <activity android:name="com.example.school.SettingInfoActivity" >
+        </activity>
+        <activity android:name="com.example.school.PersonInfoActivity" >
+        </activity>
     </application>
 
 </manifest>

@@ -7,9 +7,11 @@
     android:orientation="vertical" >
 
     <LinearLayout
+        android:id="@+id/l1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:background="@drawable/checked_background"
         android:gravity="center_horizontal"
         android:orientation="vertical" >
 
@@ -23,16 +25,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:background="@drawable/checked_background"
             android:gravity="center_horizontal"
             android:text="请登录"
             android:textSize="18dp" />
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/l2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:background="@drawable/checked_background"
         android:gravity="center_horizontal"
         android:orientation="horizontal" >
 
@@ -45,15 +48,16 @@
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_marginLeft="10dp"
-            android:background="@drawable/checked_background"
             android:gravity="center_vertical"
             android:text="消息平台" />
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/l3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:background="@drawable/checked_background"
         android:gravity="center_horizontal"
         android:orientation="horizontal" >
 
@@ -66,15 +70,16 @@
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_marginLeft="10dp"
-            android:background="@drawable/checked_background"
             android:gravity="center_vertical"
             android:text="校园活动" />
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/l4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:background="@drawable/checked_background"
         android:gravity="center_horizontal"
         android:orientation="horizontal" >
 
@@ -87,15 +92,16 @@
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_marginLeft="10dp"
-            android:background="@drawable/checked_background"
             android:gravity="center_vertical"
             android:text="思想引领" />
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/l5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:background="@drawable/checked_background"
         android:gravity="center_horizontal"
         android:orientation="horizontal" >
 
@@ -108,15 +114,16 @@
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_marginLeft="10dp"
-            android:background="@drawable/checked_background"
             android:gravity="center_vertical"
             android:text="就业招聘" />
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/l6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:background="@drawable/checked_background"
         android:gravity="center_horizontal"
         android:orientation="horizontal" >
 
@@ -129,15 +136,16 @@
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_marginLeft="10dp"
-            android:background="@drawable/checked_background"
             android:gravity="center_vertical"
             android:text="考研出国" />
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/l7"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:background="@drawable/checked_background"
         android:gravity="center_horizontal"
         android:orientation="horizontal" >
 
@@ -150,7 +158,6 @@
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:layout_marginLeft="10dp"
-            android:background="@drawable/checked_background"
             android:gravity="center_vertical"
             android:text="便利工具" />
     </LinearLayout>

@@ -13,5 +13,10 @@
     <string name="more_topic">更多专题  >></string>
     <string name="today_notice">今日动态</string>
     <string name="more_notice">更多动态  >></string>
+    <string name="user_out">退出</string>
+    <string name="change_pass">密码修改</string>
+    <string name="person_collection">个人收藏</string>
+    <string name="versions">版本检测</string>
+    <string name="self_login">自动登录</string>
 
 </resources>

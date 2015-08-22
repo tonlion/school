@@ -84,6 +84,15 @@ public class MainActivity extends Activity implements OnClickListener,
 		findViewById(R.id.more_notice).setOnClickListener(this);
 		v2.findViewById(R.id.more_topic).setOnClickListener(this);
 
+		// 为侧边栏的条目添加点击事件
+		findViewById(R.id.l1).setOnClickListener(this);
+		findViewById(R.id.l2).setOnClickListener(this);
+		findViewById(R.id.l3).setOnClickListener(this);
+		findViewById(R.id.l4).setOnClickListener(this);
+		findViewById(R.id.l5).setOnClickListener(this);
+		findViewById(R.id.l6).setOnClickListener(this);
+		findViewById(R.id.l7).setOnClickListener(this);
+
 	}
 
 	private void initImage() {
@@ -128,6 +137,39 @@ public class MainActivity extends Activity implements OnClickListener,
 		case R.id.more_topic:
 			startActivity(new Intent(this, MoreTopicActivity.class));
 			// 跳转到新页
+			break;
+		case R.id.l1:
+			startActivity(new Intent(this, SettingInfoActivity.class));
+			break;
+		case R.id.l2:
+			Intent intent = new Intent(this, PagerListActivity.class);
+			intent.putExtra("id", "0");
+			startActivity(intent);
+			break;
+		case R.id.l3:
+			intent = new Intent(this, PagerListActivity.class);
+			intent.putExtra("id", "1");
+			startActivity(intent);
+			break;
+		case R.id.l4:
+			intent = new Intent(this, PagerListActivity.class);
+			intent.putExtra("id", "2");
+			startActivity(intent);
+			break;
+		case R.id.l5:
+			intent = new Intent(this, PagerListActivity.class);
+			intent.putExtra("id", "3");
+			startActivity(intent);
+			break;
+		case R.id.l6:
+			intent = new Intent(this, PagerListActivity.class);
+			intent.putExtra("id", "4");
+			startActivity(intent);
+			break;
+		case R.id.l7:
+			intent = new Intent(this, PagerListActivity.class);
+			intent.putExtra("id", "5");
+			startActivity(intent);
 			break;
 		}
 	}

@@ -4,6 +4,7 @@ public class Notice {
 	private int image;
 	private String tilte;
 	private String createTime;
+	private int noticeType;
 
 	public Notice() {
 		super();
@@ -14,6 +15,14 @@ public class Notice {
 		this.image = image;
 		this.tilte = tilte;
 		this.createTime = createTime;
+	}
+
+	public Notice(int image, String tilte, String createTime, int noticeType) {
+		super();
+		this.image = image;
+		this.tilte = tilte;
+		this.createTime = createTime;
+		this.noticeType = noticeType;
 	}
 
 	public int getImage() {
@@ -38,5 +47,13 @@ public class Notice {
 
 	public void setCreateTime(String createTime) {
 		this.createTime = createTime;
+	}
+
+	public int getNoticeType() {
+		return noticeType;
+	}
+
+	public void setNoticeType(int noticeType) {
+		this.noticeType = noticeType;
 	}
 }

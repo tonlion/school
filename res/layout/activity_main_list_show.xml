@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" xmlns:app="http://schemas.android.com/apk/res/com.example.school">
+
+    <!-- 显示详细列表的主界面 -->
+
+    <com.astuetz.PagerSlidingTabStrip
+        android:id="@+id/main_title_show"
+        android:layout_width="match_parent"
+        android:textSize="16sp"
+        app:pstsIndicatorColor="@color/lightlue"
+        android:layout_height="50dp" >
+    </com.astuetz.PagerSlidingTabStrip>
+    <!--
+    <HorizontalScrollView
+        android:id="@+id/hscroll"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:scrollbars="none" >
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal" >
+        </RadioGroup>
+    </HorizontalScrollView>
+    -->
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/main_pager_show"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/main_title_show" >
+    </android.support.v4.view.ViewPager>
+
+</RelativeLayout>

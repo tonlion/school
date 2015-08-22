@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/person_info"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:gravity="center_vertical" >
+
+        <ImageView
+            android:id="@+id/pheader"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:padding="10dp"
+            android:src="@drawable/icon_switch_off" />
+
+        <TextView
+            android:id="@+id/pname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@id/pheader"
+            android:maxLines="1"
+            android:paddingLeft="10dp"
+            android:text="你好你好你好你好你好你好你好你好你好你好" />
+
+        <TextView
+            android:id="@+id/pmess"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/pname"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@id/pheader"
+            android:maxLines="1"
+            android:paddingLeft="10dp"
+            android:text="你好你好你好你好你好你好你好你好你好你好" />
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:drawableRight="@drawable/cc_arrow_right"
+        android:gravity="center_vertical"
+        android:text="@string/change_pass"
+        android:textSize="16sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:drawableRight="@drawable/cc_arrow_right"
+        android:gravity="center_vertical"
+        android:text="@string/person_collection"
+        android:textSize="16sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:drawableRight="@drawable/cc_arrow_right"
+        android:gravity="center_vertical"
+        android:text="@string/versions"
+        android:textSize="16sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:drawableRight="@drawable/icon_switch_on"
+        android:gravity="center_vertical"
+        android:text="@string/self_login"
+        android:textSize="16sp" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ef7"
+        android:layout_marginTop="40dp"
+        android:text="@string/user_out" />
+
+</LinearLayout>
