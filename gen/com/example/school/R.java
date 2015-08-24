@@ -9,12 +9,14 @@ package com.example.school;
 
 public final class R {
     public static final class anim {
-        public static final int left_out=0x7f040000;
-        public static final int rignt_in=0x7f040001;
-        public static final int slide_in_from_bottom=0x7f040002;
-        public static final int slide_in_from_top=0x7f040003;
-        public static final int slide_out_to_bottom=0x7f040004;
-        public static final int slide_out_to_top=0x7f040005;
+        public static final int bottom_in=0x7f040000;
+        public static final int bottom_out=0x7f040001;
+        public static final int left_out=0x7f040002;
+        public static final int rignt_in=0x7f040003;
+        public static final int slide_in_from_bottom=0x7f040004;
+        public static final int slide_in_from_top=0x7f040005;
+        public static final int slide_out_to_bottom=0x7f040006;
+        public static final int slide_out_to_top=0x7f040007;
     }
     public static final class attr {
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
@@ -450,24 +452,26 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int yuanjiao=0x7f020033;
     }
     public static final class id {
-        public static final int action_settings=0x7f06003a;
+        public static final int action_settings=0x7f060043;
+        public static final int album=0x7f060041;
         public static final int both=0x7f060003;
-        public static final int container=0x7f06002f;
+        public static final int container=0x7f060035;
         public static final int disabled=0x7f060000;
-        public static final int fl_inner=0x7f060034;
+        public static final int exit=0x7f060042;
+        public static final int fl_inner=0x7f06003a;
         public static final int flip=0x7f060008;
         public static final int fullscreen=0x7f06000f;
         public static final int gridview=0x7f060009;
-        public static final int l1=0x7f060022;
-        public static final int l2=0x7f060023;
-        public static final int l3=0x7f060024;
-        public static final int l4=0x7f060025;
-        public static final int l5=0x7f060026;
-        public static final int l6=0x7f060027;
-        public static final int l7=0x7f060028;
+        public static final int l1=0x7f060028;
+        public static final int l2=0x7f060029;
+        public static final int l3=0x7f06002a;
+        public static final int l4=0x7f06002b;
+        public static final int l5=0x7f06002c;
+        public static final int l6=0x7f06002d;
+        public static final int l7=0x7f06002e;
         public static final int left=0x7f06000c;
         public static final int linearcontenter=0x7f060014;
-        public static final int listview=0x7f060033;
+        public static final int listview=0x7f060039;
         public static final int login_btn=0x7f060015;
         public static final int login_name=0x7f060012;
         public static final int login_pass=0x7f060013;
@@ -475,39 +479,46 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int main_title_show=0x7f060016;
         public static final int manualOnly=0x7f060004;
         public static final int margin=0x7f06000e;
-        public static final int more_notice=0x7f06002a;
-        public static final int more_topic=0x7f060031;
+        public static final int more_notice=0x7f060030;
+        public static final int more_topic=0x7f060037;
         public static final int more_topic_list=0x7f060019;
         public static final int none=0x7f060010;
-        public static final int notice_create_time=0x7f060021;
-        public static final int notice_img=0x7f06001f;
+        public static final int notice_create_time=0x7f060027;
+        public static final int notice_img=0x7f060025;
         public static final int notice_list=0x7f060018;
-        public static final int notice_title=0x7f060020;
-        public static final int person_info=0x7f06001a;
-        public static final int pheader=0x7f06001b;
-        public static final int pmess=0x7f06001d;
-        public static final int pname=0x7f06001c;
+        public static final int notice_title=0x7f060026;
+        public static final int person_class=0x7f06001c;
+        public static final int person_college=0x7f06001f;
+        public static final int person_domain=0x7f06001d;
+        public static final int person_faculty=0x7f06001e;
+        public static final int person_image=0x7f06001a;
+        public static final int person_info=0x7f060020;
+        public static final int person_name=0x7f06001b;
+        public static final int pheader=0x7f060021;
+        public static final int photo=0x7f060040;
+        public static final int pmess=0x7f060023;
+        public static final int pname=0x7f060022;
         public static final int pullDownFromTop=0x7f060005;
         public static final int pullFromEnd=0x7f060002;
         public static final int pullFromStart=0x7f060001;
         public static final int pullUpFromBottom=0x7f060006;
-        public static final int pull_to_refresh_image=0x7f060035;
-        public static final int pull_to_refresh_progress=0x7f060036;
-        public static final int pull_to_refresh_sub_text=0x7f060038;
-        public static final int pull_to_refresh_text=0x7f060037;
+        public static final int pull_to_refresh_image=0x7f06003b;
+        public static final int pull_to_refresh_progress=0x7f06003c;
+        public static final int pull_to_refresh_sub_text=0x7f06003e;
+        public static final int pull_to_refresh_text=0x7f06003d;
         public static final int right=0x7f06000d;
         public static final int rotate=0x7f060007;
         public static final int scrollview=0x7f06000b;
         public static final int selected_view=0x7f060011;
-        public static final int slidingmenumain=0x7f060039;
-        public static final int title_pager=0x7f06002e;
-        public static final int today_notice=0x7f060029;
-        public static final int topic_details=0x7f06001e;
-        public static final int topic_item_con=0x7f06002d;
-        public static final int topic_item_pic=0x7f06002b;
-        public static final int topic_item_title=0x7f06002c;
-        public static final int topic_list=0x7f060032;
-        public static final int topic_title=0x7f060030;
+        public static final int slidingmenumain=0x7f06003f;
+        public static final int title_pager=0x7f060034;
+        public static final int today_notice=0x7f06002f;
+        public static final int topic_details=0x7f060024;
+        public static final int topic_item_con=0x7f060033;
+        public static final int topic_item_pic=0x7f060031;
+        public static final int topic_item_title=0x7f060032;
+        public static final int topic_list=0x7f060038;
+        public static final int topic_title=0x7f060036;
         public static final int webview=0x7f06000a;
     }
     public static final class layout {
@@ -529,6 +540,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int pull_to_refresh_header_vertical=0x7f03000f;
         public static final int radio_button=0x7f030010;
         public static final int slidingmenumain=0x7f030011;
+        public static final int toast_change_image=0x7f030012;
     }
     public static final class menu {
         public static final int main=0x7f0a0000;
@@ -537,6 +549,10 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int action_settings=0x7f080007;
         public static final int app_name=0x7f080006;
         public static final int change_pass=0x7f080013;
+        public static final int class_num=0x7f080019;
+        public static final int college=0x7f08001c;
+        public static final int domain=0x7f08001a;
+        public static final int faculty=0x7f08001b;
         public static final int hello_world=0x7f080008;
         public static final int login_btn=0x7f08000d;
         public static final int login_myself=0x7f08000c;
@@ -544,6 +560,8 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int login_pass=0x7f08000a;
         public static final int more_notice=0x7f080011;
         public static final int more_topic=0x7f08000f;
+        public static final int name=0x7f080017;
+        public static final int null_in=0x7f08001d;
         public static final int person_collection=0x7f080014;
         /**  Just use standard Pull Down String when pulling up. These can be set for languages which require it 
  Just use standard Pull Down String when pulling up. These can be set for languages which require it 
@@ -556,6 +574,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int pull_to_refresh_release_label=0x7f080001;
         public static final int rem_pass=0x7f08000b;
         public static final int self_login=0x7f080016;
+        public static final int sex=0x7f080018;
         public static final int today_notice=0x7f080010;
         public static final int topic=0x7f08000e;
         public static final int user_out=0x7f080012;
@@ -571,11 +590,13 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 
 
 
+
     
 
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
             backward-compatibility can go here.
+
 
 
 
@@ -603,6 +624,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int barcolor=0x7f090004;
         public static final int font_style=0x7f090003;
         public static final int login_margin=0x7f090002;
+        public static final int popupstyle=0x7f090005;
     }
     public static final class styleable {
         /** Attributes that can be used with a PagerSlidingTabStrip.

@@ -27,7 +27,7 @@
             android:layout_toRightOf="@id/pheader"
             android:maxLines="1"
             android:paddingLeft="10dp"
-            android:text="你好你好你好你好你好你好你好你好你好你好" />
+            android:text="你好" />
 
         <TextView
             android:id="@+id/pmess"
@@ -38,7 +38,7 @@
             android:layout_toRightOf="@id/pheader"
             android:maxLines="1"
             android:paddingLeft="10dp"
-            android:text="你好你好你好你好你好你好你好你好你好你好" />
+            android:text="你好你好你好你好" />
     </RelativeLayout>
 
     <TextView
