@@ -1,5 +1,7 @@
 package com.example.school;
 
+import com.example.application.SchoolApplication;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -10,6 +12,7 @@ import android.widget.Button;
 public class LoginActivity extends Activity implements OnClickListener {
 
 	private Button mButton;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -17,9 +20,11 @@ public class LoginActivity extends Activity implements OnClickListener {
 		mButton = (Button) findViewById(R.id.login_btn);
 		mButton.setOnClickListener(this);
 	}
+
 	@Override
 	public void onClick(View v) {
-		startActivity(new Intent(this,MainActivity.class));
+		SchoolApplication.getInstance().getRequestQueue();
+		startActivity(new Intent(this, MainActivity.class));
 	}
-	
+
 }

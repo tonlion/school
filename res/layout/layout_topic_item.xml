@@ -8,6 +8,8 @@
         android:id="@+id/topic_item_pic"
         android:layout_width="70dp"
         android:layout_height="70dp"
+        android:contentDescription="@string/app_name"
+        android:padding="5dp"
         android:src="@drawable/ic_launcher" />
 
     <TextView
@@ -21,12 +23,24 @@
 
     <TextView
         android:id="@+id/topic_item_con"
-        android:layout_below="@id/topic_item_title"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
+        android:layout_below="@id/topic_item_title"
         android:layout_marginTop="15dp"
         android:layout_toRightOf="@id/topic_item_pic"
-        android:text="@string/app_name"
+        android:maxLines="1"
+        android:textColor="@color/blackgrey"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/topic_item_date"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="15dp"
+        android:maxLines="1"
+        android:layout_marginRight="10dp"
         android:textColor="@color/blackgrey"
         android:textSize="12sp" />
 

@@ -10,6 +10,7 @@
     <string name="login_myself">自动登录</string>
     <string name="login_btn">登录</string>
     <string name="topic">专题</string>
+    <string name="topic_list">专题内容</string>
     <string name="more_topic">更多专题  >></string>
     <string name="today_notice">今日动态</string>
     <string name="more_notice">更多动态  >></string>
@@ -25,5 +26,14 @@
     <string name="faculty">院系</string>
     <string name="college">学校</string>
     <string name="null_in">空</string>
+    <string name="take_photo">拍照</string>
+    <string name="album">从相册选择</string>
+    <string name="p_login">请登录</string>
+    <string name="xxpt">消息平台</string>
+    <string name="xyhd">校园活动</string>
+    <string name="sxyl">思想引领</string>
+    <string name="jyzp">就业招聘</string>
+    <string name="kycg">考研出国</string>
+    <string name="blgj">便利工具</string>
 
 </resources>

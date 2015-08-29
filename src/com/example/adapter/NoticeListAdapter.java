@@ -2,8 +2,12 @@ package com.example.adapter;
 
 import java.util.List;
 
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.ImageLoader.ImageListener;
+import com.example.application.SchoolApplication;
+import com.example.data.DataManager;
 import com.example.entity.Notice;
-import com.example.school.NoticeListActivity;
+import com.example.school.NoticeDetailsActivity;
 import com.example.school.R;
 
 import android.app.Activity;
@@ -21,11 +25,15 @@ public class NoticeListAdapter extends BaseAdapter {
 
 	private List<Notice> notices;
 	private Context mContext;
+	private ImageLoader loader;
 
 	public NoticeListAdapter(List<Notice> notices, Context mContext) {
 		super();
 		this.notices = notices;
 		this.mContext = mContext;
+		this.loader = new ImageLoader(SchoolApplication.getInstance()
+				.getRequestQueue(), SchoolApplication.getInstance()
+				.getImageCache());
 	}
 
 	@Override
@@ -44,7 +52,7 @@ public class NoticeListAdapter extends BaseAdapter {
 	}
 
 	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {
+	public View getView(final int position, View convertView, ViewGroup parent) {
 		NoticeHolder holder;
 		if (convertView == null) {
 			LayoutInflater inflater = LayoutInflater.from(mContext);
@@ -61,18 +69,31 @@ public class NoticeListAdapter extends BaseAdapter {
 			holder = (NoticeHolder) convertView.getTag();
 		}
 		// 绑定数据
-		holder.image.setImageResource(notices.get(position).getImage());
-		holder.title.setText(notices.get(position).getTilte());
-		holder.createTime.setText(notices.get(position).getCreateTime());
+		// 利用imageloader加载图片
+		String imageAddress = notices.get(position).getImg();
+
+		String url = "";
+		if (imageAddress.length() > 0) {
+			url = DataManager.ROOT_URL
+					+ imageAddress.substring(31, imageAddress.length());
+		}
+		ImageListener listener = ImageLoader.getImageListener(holder.image,
+				R.drawable.cc_default_news_img,
+				R.drawable.cc_default_news_img_fail);
+		loader.get(url, listener);
+		holder.title.setText(notices.get(position).getTitle());
+		holder.createTime.setText(notices.get(position).getTime());
 		// 为添加的数据设置一个padding
 		convertView.setPadding(10, 0, 10, 0);
 		// 为每条动态设置点击事件
 		convertView.setOnClickListener(new OnClickListener() {
-
+			// 暂时默认的跳转传值方式
 			@Override
 			public void onClick(View v) {
-				mContext.startActivity(new Intent(mContext,
-						NoticeListActivity.class));
+				Intent intent = new Intent(mContext,
+						NoticeDetailsActivity.class);
+				intent.putExtra("noticeSe", notices.get(position));
+				mContext.startActivity(intent);
 			}
 		});
 		convertView.setBackgroundResource(R.drawable.backgroud);

@@ -2,20 +2,23 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="10dp"
-    android:layout_marginRight="10dp"
+    android:background="#aeee"
     android:orientation="vertical" >
 
     <RelativeLayout
         android:id="@+id/person_info"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:gravity="center_vertical" >
+        android:background="#afff"
+        android:gravity="center_vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp" >
 
         <ImageView
             android:id="@+id/pheader"
             android:layout_width="60dp"
             android:layout_height="60dp"
+            android:contentDescription="@string/app_name"
             android:padding="10dp"
             android:src="@drawable/icon_switch_off" />
 
@@ -27,7 +30,7 @@
             android:layout_toRightOf="@id/pheader"
             android:maxLines="1"
             android:paddingLeft="10dp"
-            android:text="你好" />
+            android:text="@string/app_name" />
 
         <TextView
             android:id="@+id/pmess"
@@ -38,49 +41,64 @@
             android:layout_toRightOf="@id/pheader"
             android:maxLines="1"
             android:paddingLeft="10dp"
-            android:text="你好你好你好你好" />
+            android:text="@string/app_name" />
     </RelativeLayout>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="40dp"
+        android:layout_marginTop="1dp"
+        android:background="#afff"
         android:drawableRight="@drawable/cc_arrow_right"
         android:gravity="center_vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:text="@string/change_pass"
         android:textSize="16sp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="1dp"
+        android:background="#afff"
         android:drawableRight="@drawable/cc_arrow_right"
         android:gravity="center_vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:text="@string/person_collection"
         android:textSize="16sp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="1dp"
+        android:background="#afff"
         android:drawableRight="@drawable/cc_arrow_right"
         android:gravity="center_vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:text="@string/versions"
         android:textSize="16sp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="1dp"
+        android:background="#afff"
         android:drawableRight="@drawable/icon_switch_on"
         android:gravity="center_vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:text="@string/self_login"
         android:textSize="16sp" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#ef7"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
         android:layout_marginTop="40dp"
+        android:background="#cf00"
         android:text="@string/user_out" />
 
 </LinearLayout>

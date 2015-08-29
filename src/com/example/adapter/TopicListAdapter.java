@@ -2,8 +2,12 @@ package com.example.adapter;
 
 import java.util.List;
 
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.ImageLoader.ImageListener;
+import com.example.application.SchoolApplication;
+import com.example.data.DataManager;
 import com.example.entity.Topic;
-import com.example.school.NoticeDetailsActivity;
+import com.example.school.TopicItemDetailsActivity;
 import com.example.school.R;
 
 import android.app.Activity;
@@ -20,12 +24,16 @@ import android.widget.TextView;
 public class TopicListAdapter extends BaseAdapter {
 
 	private List<Topic> topics;
-	private Context context;;
+	private Context context;
+	private ImageLoader loader;
 
 	public TopicListAdapter(List<Topic> topics, Context context) {
 		super();
 		this.topics = topics;
 		this.context = context;
+		loader = new ImageLoader(SchoolApplication.getInstance()
+				.getRequestQueue(), SchoolApplication.getInstance()
+				.getImageCache());
 	}
 
 	@Override
@@ -44,7 +52,7 @@ public class TopicListAdapter extends BaseAdapter {
 	}
 
 	@Override
-	public View getView(int position, View convertView, ViewGroup parent) {
+	public View getView(final int position, View convertView, ViewGroup parent) {
 		TopicHoleder holeder;
 		if (convertView == null) {
 			LayoutInflater inflater = LayoutInflater.from(context);
@@ -60,15 +68,26 @@ public class TopicListAdapter extends BaseAdapter {
 		} else {
 			holeder = (TopicHoleder) convertView.getTag();
 		}
-		holeder.pic.setImageResource(topics.get(position).getImage());
-		holeder.title.setText(topics.get(position).getTitle());
-		holeder.content.setText(topics.get(position).getContent());
+		String imageAddress = topics.get(position).getSubject_url();
+		String url = "";
+		if (imageAddress.length() > 0) {
+			url = DataManager.IP_URL
+					+ imageAddress.substring(25, imageAddress.length());
+		}
+		ImageListener listener = ImageLoader.getImageListener(holeder.pic,
+				R.drawable.cc_default_news_img,
+				R.drawable.cc_default_news_img_fail);
+		loader.get(url, listener);
+		holeder.title.setText(topics.get(position).getSubject_title());
+		holeder.content.setText(topics.get(position).getSubject_date());
 		convertView.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-				context.startActivity(new Intent(context,
-						NoticeDetailsActivity.class));
+				Intent intent = new Intent(context,
+						TopicItemDetailsActivity.class);
+				intent.putExtra("topicSe", topics.get(position));
+				context.startActivity(intent);
 			}
 		});
 		convertView.setBackgroundResource(R.drawable.backgroud);

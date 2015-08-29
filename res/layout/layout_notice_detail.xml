@@ -1,31 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- 显示每条数据详细信息 -->
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:background="#feee" >
 
-    <!-- 显示每条数据详细信息 -->
-
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#ccc"
-        android:paddingTop="20dp"
-        android:text="环保部：事故区域检测出特别污染物  外部污水已封住"
-        android:textSize="20dp" />
+        android:orientation="vertical" >
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="10dp"
-        android:text="人民网-人民日报         2015-08-14 08：44：12"
-        android:textColor="#aaa"
-        android:textSize="12dp" />
+        <TextView
+            android:id="@+id/notice_details_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#eddd"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="20dp"
+            android:textSize="20sp" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="事故区域检测出特别污染物外排污水一封住" />
+        <TextView
+            android:id="@+id/notice_details_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#cfff"
+            android:paddingBottom="5dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:textColor="#aaa"
+            android:textSize="12sp" />
 
-</LinearLayout>
+        <WebView
+            android:id="@+id/notice_details_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="2dp"
+            android:background="#cfff"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="25dp"
+            android:scrollbars="none" />
+    </LinearLayout>
+
+</ScrollView>

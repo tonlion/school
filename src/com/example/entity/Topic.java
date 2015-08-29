@@ -1,44 +1,72 @@
 package com.example.entity;
 
-public class Topic {
+import java.io.Serializable;
 
-	private int image;
-	private String title;
-	private String content;
+public class Topic implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private String subject_date;
+	private String subject_detail;
+	private int subject_id;
+	private String subject_title;
+	private String subject_url;
 
 	public Topic() {
 		super();
+
 	}
 
-	public Topic(int image, String title, String content) {
+	public Topic(String subject_date, String subject_detail, int subject_id,
+			String subject_title, String subject_url) {
 		super();
-		this.image = image;
-		this.title = title;
-		this.content = content;
+		this.subject_date = subject_date;
+		this.subject_detail = subject_detail;
+		this.subject_id = subject_id;
+		this.subject_title = subject_title;
+		this.subject_url = subject_url;
 	}
 
-	public int getImage() {
-		return image;
+	public String getSubject_date() {
+		return subject_date;
 	}
 
-	public void setImage(int image) {
-		this.image = image;
+	public void setSubject_date(String subject_date) {
+		this.subject_date = subject_date;
 	}
 
-	public String getTitle() {
-		return title;
+	public String getSubject_detail() {
+		return subject_detail;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public void setSubject_detail(String subject_detail) {
+		this.subject_detail = subject_detail;
 	}
 
-	public String getContent() {
-		return content;
+	public int getSubject_id() {
+		return subject_id;
 	}
 
-	public void setContent(String content) {
-		this.content = content;
+	public void setSubject_id(int subject_id) {
+		this.subject_id = subject_id;
+	}
+
+	public String getSubject_title() {
+		return subject_title;
+	}
+
+	public void setSubject_title(String subject_title) {
+		this.subject_title = subject_title;
+	}
+
+	public String getSubject_url() {
+		return subject_url;
+	}
+
+	public void setSubject_url(String subject_url) {
+		this.subject_url = subject_url;
 	}
 
 }

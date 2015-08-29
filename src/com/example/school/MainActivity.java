@@ -2,12 +2,17 @@ package com.example.school;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import com.example.adapter.NoticeListAdapter;
 import com.example.adapter.TopicListAdapter;
 import com.example.adapter.ViewPagerAdapter;
+import com.example.application.SchoolApplication;
+import com.example.data.DataManager;
 import com.example.entity.Notice;
 import com.example.entity.Topic;
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
+import com.handmark.pulltorefresh.library.PullToRefreshBase.Mode;
+import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
+import com.handmark.pulltorefresh.library.PullToRefreshListView;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
 import android.app.Activity;
@@ -25,21 +30,32 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 
 public class MainActivity extends Activity implements OnClickListener,
-		OnPageChangeListener {
+		OnPageChangeListener, OnRefreshListener2<ListView> {
 	private ListView topic;
-	private ListView notice;
 	private List<Notice> notices;
 	private List<ImageView> images;
 	private List<Topic> topics;
 	private SlidingMenu menu;
 	private ViewPager mPager;
 	private LinearLayout lyLayout;
+	private TopicListAdapter tAdapter;
+	private NoticeListAdapter adapter2;
+	PullToRefreshListView notice;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main_show);
-		notice = (ListView) findViewById(R.id.notice_list);
+		notice = (PullToRefreshListView) findViewById(R.id.notice_list);
+		notice.setMode(Mode.BOTH);
+		View v2 = initViewPager();
+		initSlidingMenu(v2);
+		initView();
+		initListener(v2);
+
+	}
+
+	private View initViewPager() {
 		// 加载viewpager
 		LayoutInflater inflater = LayoutInflater.from(this);
 		View v2 = inflater.inflate(R.layout.layout_viewpager, null);
@@ -48,11 +64,8 @@ public class MainActivity extends Activity implements OnClickListener,
 		// 小圆点
 		lyLayout = (LinearLayout) v2.findViewById(R.id.container);
 		// 得到头部文件中的listview
-		initData();
 		topic = (ListView) v2.findViewById(R.id.topic_list);
 		// 为主题添加数据
-		TopicListAdapter nAdapter = new TopicListAdapter(topics, this);
-		topic.setAdapter(nAdapter);
 		for (int i = 0; i < lyLayout.getChildCount(); i++) {
 			if (i == 0) {
 				lyLayout.getChildAt(i).setBackgroundColor(Color.BLUE);
@@ -65,6 +78,10 @@ public class MainActivity extends Activity implements OnClickListener,
 		initImage();
 		ViewPagerAdapter vAdapter = new ViewPagerAdapter(images);
 		mPager.setAdapter(vAdapter);
+		return v2;
+	}
+
+	private void initSlidingMenu(View v2) {
 		// 侧边栏样式
 		menu = new SlidingMenu(this);
 		menu.setMode(SlidingMenu.LEFT);// 设置滑动方向
@@ -73,17 +90,25 @@ public class MainActivity extends Activity implements OnClickListener,
 		menu.setMenu(v);
 		menu.attachToActivity(this, SlidingMenu.SLIDING_CONTENT);
 		menu.setBehindOffset(300);
-		// 专题列表
-		initData();
-		notice.addHeaderView(v2);
-		// 动态列表
-		initData1();
-		NoticeListAdapter adapter2 = new NoticeListAdapter(notices, this);
-		notice.setAdapter(adapter2);
-		// 为更多添加点击事件
-		findViewById(R.id.more_notice).setOnClickListener(this);
-		v2.findViewById(R.id.more_topic).setOnClickListener(this);
+		notice.getRefreshableView().addHeaderView(v2);
+	}
 
+	private void initView() {
+		// 专题列表 动态列表添加数据
+		topics = new ArrayList<Topic>();
+		notices = new ArrayList<Notice>();
+		tAdapter = new TopicListAdapter(topics, MainActivity.this);
+		adapter2 = new NoticeListAdapter(notices, MainActivity.this);
+		initData();
+		topic.setAdapter(tAdapter);
+		notice.setAdapter(adapter2);
+	}
+
+	private void initListener(View v2) {
+		// 为更多添加点击事件
+		v2.findViewById(R.id.more_notice).setOnClickListener(this);
+		v2.findViewById(R.id.more_topic).setOnClickListener(this);
+		notice.setOnRefreshListener(this);
 		// 为侧边栏的条目添加点击事件
 		findViewById(R.id.l1).setOnClickListener(this);
 		findViewById(R.id.l2).setOnClickListener(this);
@@ -92,7 +117,6 @@ public class MainActivity extends Activity implements OnClickListener,
 		findViewById(R.id.l5).setOnClickListener(this);
 		findViewById(R.id.l6).setOnClickListener(this);
 		findViewById(R.id.l7).setOnClickListener(this);
-
 	}
 
 	private void initImage() {
@@ -107,31 +131,22 @@ public class MainActivity extends Activity implements OnClickListener,
 		images.add(mImage);
 	}
 
-	private void initData() {
-		topics = new ArrayList<Topic>();
-		topics.add(new Topic(R.drawable.logo, "你好", "2015-01-01"));
-	}
-
-	public void initData1() {
-		notices = new ArrayList<Notice>();
-		notices.add(new Notice(R.drawable.cc_school_sxyl, "你好", "2015-01-01"));
-		notices.add(new Notice(R.drawable.cc_school_sxyl, "你好", "2015-01-01"));
-		notices.add(new Notice(R.drawable.cc_school_sxyl, "你好", "2015-01-01"));
-		notices.add(new Notice(R.drawable.cc_school_sxyl, "你好", "2015-01-01"));
-		notices.add(new Notice(R.drawable.cc_school_sxyl, "你好", "2015-01-01"));
-		notices.add(new Notice(R.drawable.cc_school_sxyl, "你好", "2015-01-01"));
-		notices.add(new Notice(R.drawable.cc_school_sxyl, "你好", "2015-01-01"));
-		notices.add(new Notice(R.drawable.cc_school_sxyl, "你好", "2015-01-01"));
-		notices.add(new Notice(R.drawable.cc_school_sxyl, "你好", "2015-01-01"));
-		notices.add(new Notice(R.drawable.cc_school_sxyl, "你好", "2015-01-01"));
-		notices.add(new Notice(R.drawable.cc_school_sxyl, "你好", "2015-01-01"));
+	public void initData() {
+		DataManager data2 = new DataManager(tAdapter, topics, this, notice);
+		SchoolApplication.getInstance().getRequestQueue()
+				.add(data2.getTopicData(1));
+		DataManager data = new DataManager(adapter2, notices, this, notice);
+		SchoolApplication.getInstance().getRequestQueue()
+				.add(data.getNoticeData(true));
+		SchoolApplication.getInstance().getRequestQueue()
+				.add(data.getNoticeData(false));
 	}
 
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.more_notice:
-			startActivity(new Intent(this, MoreTopicActivity.class));
+			startActivity(new Intent(this, NoticeListActivity.class));
 			// 跳转到新页
 			break;
 		case R.id.more_topic:
@@ -143,7 +158,7 @@ public class MainActivity extends Activity implements OnClickListener,
 			break;
 		case R.id.l2:
 			Intent intent = new Intent(this, PagerListActivity.class);
-			intent.putExtra("id", "0");
+			// intent.putExtra("id", "0");
 			startActivity(intent);
 			break;
 		case R.id.l3:
@@ -168,7 +183,7 @@ public class MainActivity extends Activity implements OnClickListener,
 			break;
 		case R.id.l7:
 			intent = new Intent(this, PagerListActivity.class);
-			intent.putExtra("id", "5");
+			// intent.putExtra("id", "5");
 			startActivity(intent);
 			break;
 		}
@@ -193,5 +208,17 @@ public class MainActivity extends Activity implements OnClickListener,
 				iv.setBackgroundColor(Color.GREEN);
 			}
 		}
+	}
+
+	@Override
+	public void onPullDownToRefresh(PullToRefreshBase<ListView> refreshView) {
+		initData();
+	}
+
+	@Override
+	public void onPullUpToRefresh(PullToRefreshBase<ListView> refreshView) {
+		DataManager allData = new DataManager(adapter2, notices, this, notice);
+		SchoolApplication.getInstance().getRequestQueue()
+				.add(allData.getClearNoticeData());
 	}
 }

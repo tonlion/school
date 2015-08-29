@@ -41,7 +41,7 @@ public class PersonInfoActivity extends Activity implements OnClickListener {
 			window.setOutsideTouchable(true);
 			window.setBackgroundDrawable(new ColorDrawable());
 			window.setAnimationStyle(R.style.popupstyle);
-			window.showAtLocation(view, Gravity.BOTTOM, 0, 20);
+			window.showAtLocation(view, Gravity.BOTTOM, 0, 0);
 			break;
 		}
 	}

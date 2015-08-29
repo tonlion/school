@@ -1,7 +1,7 @@
 package com.example.adapter;
 
 import java.util.List;
-import java.util.Map;
+import com.example.entity.SlidingMenus;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -10,10 +10,10 @@ import android.support.v4.app.FragmentPagerAdapter;
 public class PagerListAdapter extends FragmentPagerAdapter {
 
 	private List<Fragment> notices;
-	private List<Map<String, String>> maps;
+	private List<SlidingMenus> maps;
 
 	public PagerListAdapter(FragmentManager fm, List<Fragment> notices,
-			List<Map<String, String>> maps) {
+			List<SlidingMenus> maps) {
 		super(fm);
 		this.notices = notices;
 		this.maps = maps;
@@ -31,7 +31,7 @@ public class PagerListAdapter extends FragmentPagerAdapter {
 
 	@Override
 	public CharSequence getPageTitle(int position) {
-		return maps.get(position).get("name");
+		return maps.get(position).getItemName();
 	}
 
 }

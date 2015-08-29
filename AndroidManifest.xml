@@ -7,8 +7,11 @@
     <uses-sdk
         android:minSdkVersion="14"
         android:targetSdkVersion="18" />
+    <!-- 请求网络权限 -->
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name="com.example.application.SchoolApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
@@ -26,15 +29,17 @@
         </activity>
         <activity android:name="com.example.school.MoreTopicActivity" >
         </activity>
-        <activity android:name="com.example.school.NoticeListActivity" >
-        </activity>
         <activity android:name="com.example.school.NoticeDetailsActivity" >
+        </activity>
+        <activity android:name="com.example.school.TopicItemDetailsActivity" >
         </activity>
         <activity android:name="com.example.school.PagerListActivity" >
         </activity>
         <activity android:name="com.example.school.SettingInfoActivity" >
         </activity>
         <activity android:name="com.example.school.PersonInfoActivity" >
+        </activity>
+        <activity android:name="com.example.school.NoticeListActivity" >
         </activity>
     </application>
 

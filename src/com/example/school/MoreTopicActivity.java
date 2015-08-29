@@ -4,15 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.example.adapter.TopicListAdapter;
+import com.example.application.SchoolApplication;
+import com.example.data.DataManager;
 import com.example.entity.Topic;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.ListView;
 
 public class MoreTopicActivity extends Activity {
 	private ListView mView;
-	private List<Topic> notices;
+	private List<Topic> topics;
+	private TopicListAdapter tAdapter;
 
 	// 显示每个主题界面
 	@Override
@@ -20,23 +22,15 @@ public class MoreTopicActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_more_topic_list);
 		mView = (ListView) findViewById(R.id.more_topic_list);
-		initData1();
-		TopicListAdapter adapter = new TopicListAdapter(notices, this);
-		mView.setAdapter(adapter);
+		topics = new ArrayList<Topic>();
+		tAdapter = new TopicListAdapter(topics, this);
+		initData();
+		mView.setAdapter(tAdapter);
 	}
 
-	public void initData1() {
-		notices = new ArrayList<Topic>();
-		notices.add(new Topic(R.drawable.ic_launcher, "你好", "2015-01-01"));
-		notices.add(new Topic(R.drawable.ic_launcher, "你好", "2015-01-01"));
-		notices.add(new Topic(R.drawable.ic_launcher, "你好", "2015-01-01"));
-		notices.add(new Topic(R.drawable.ic_launcher, "你好", "2015-01-01"));
-		notices.add(new Topic(R.drawable.ic_launcher, "你好", "2015-01-01"));
-		notices.add(new Topic(R.drawable.ic_launcher, "你好", "2015-01-01"));
-		notices.add(new Topic(R.drawable.ic_launcher, "你好", "2015-01-01"));
-		notices.add(new Topic(R.drawable.ic_launcher, "你好", "2015-01-01"));
-		notices.add(new Topic(R.drawable.ic_launcher, "你好", "2015-01-01"));
-		notices.add(new Topic(R.drawable.ic_launcher, "你好", "2015-01-01"));
-		notices.add(new Topic(R.drawable.ic_launcher, "你好", "2015-01-01"));
+	public void initData() {
+		DataManager manager = new DataManager(tAdapter, topics, this, null);
+		SchoolApplication.getInstance().getRequestQueue()
+				.add(manager.getTopicData(20));
 	}
 }
