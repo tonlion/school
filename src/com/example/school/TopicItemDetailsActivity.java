@@ -27,12 +27,12 @@ public class TopicItemDetailsActivity extends Activity {
 	private TextView title;
 	private TextView content;
 
-	//此方法可能出错，原因：加载首部出错
+	// 此方法可能出错，原因：加载首部出错
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.list_view);
-		item = (ListView) findViewById(R.id.listview);
+		setContentView(R.layout.activity_more_topic_list);
+		item = (ListView) findViewById(R.id.more_topic_list);
 		Topic topic = initListView();
 		notices = new ArrayList<Notice>();
 		NoticeListAdapter adapter = new NoticeListAdapter(notices, this);
@@ -64,6 +64,7 @@ public class TopicItemDetailsActivity extends Activity {
 		return topic;
 	}
 
+	// 加载主题的图片，只有一个所以这么做
 	private class MyAsyncTask extends AsyncTask<String, Void, Bitmap> {
 
 		@Override

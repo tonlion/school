@@ -3,6 +3,7 @@ package com.example.data;
 import java.util.List;
 
 import android.content.Context;
+import android.os.Handler;
 import android.widget.Toast;
 
 import com.android.volley.Response;
@@ -148,7 +149,6 @@ public class DataManager {
 	public PostRequest getTopicItemData(int subjectId) {
 		PostRequest post = new PostRequest(NEWSREQUEST_URL,
 				new Listener<String>() {
-
 					@Override
 					public void onResponse(String arg0) {
 						if (listView != null)
@@ -179,14 +179,23 @@ public class DataManager {
 		return post;
 	}
 
+	// 只为加载不同数据类时调用
 	public PostRequest getNoticeTypeData(int category) {
+		if (listView != null)
+			listView.setRefreshing(); // 设置进入页面时自动刷新
 		PostRequest post = new PostRequest(NEWSREQUEST_URL,
 				new Listener<String>() {
-
 					@Override
 					public void onResponse(String arg0) {
-						if (listView != null)
-							listView.onRefreshComplete();
+						// 之前加载太快，所以加上handler
+						if (listView != null) {
+							new Handler().postDelayed(new Runnable() {
+								public void run() {
+									listView.onRefreshComplete();
+								}
+							}, 1000);
+
+						}
 						if (arg0 != null) {
 							Gson gson = new Gson();
 							List<Notice> list = gson.fromJson(arg0,

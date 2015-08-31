@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android" >
     <!-- 设置登陆按钮点击的效果 -->
-    <item android:state_pressed="true" android:drawable="@drawable/after_onselected"></item>
-<item android:drawable="@drawable/before_onpress"></item>
+    <item android:state_pressed="true" android:drawable="@drawable/login_btn_after_onselected"></item>
+<item android:drawable="@drawable/login_btn_before_onpress"></item>
 </selector>

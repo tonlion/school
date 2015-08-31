@@ -41,6 +41,8 @@
         </activity>
         <activity android:name="com.example.school.NoticeListActivity" >
         </activity>
+        <activity android:name="com.example.school.ModifyPasswordActivity" >
+        </activity>
     </application>
 
 </manifest>

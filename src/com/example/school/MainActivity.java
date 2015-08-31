@@ -8,6 +8,7 @@ import com.example.adapter.ViewPagerAdapter;
 import com.example.application.SchoolApplication;
 import com.example.data.DataManager;
 import com.example.entity.Notice;
+import com.example.entity.SlidingMenus;
 import com.example.entity.Topic;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.Mode;
@@ -40,19 +41,50 @@ public class MainActivity extends Activity implements OnClickListener,
 	private LinearLayout lyLayout;
 	private TopicListAdapter tAdapter;
 	private NoticeListAdapter adapter2;
-	PullToRefreshListView notice;
+	private PullToRefreshListView notice;
+	private List<SlidingMenus> menus;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main_show);
 		notice = (PullToRefreshListView) findViewById(R.id.notice_list);
+		menus = new ArrayList<SlidingMenus>();
 		notice.setMode(Mode.BOTH);
 		View v2 = initViewPager();
 		initSlidingMenu(v2);
 		initView();
 		initListener(v2);
+		initTabMenus();
+		// 修改状态栏
+		getActionBar().setDisplayShowHomeEnabled(false);
+	}
 
+	private void initTabMenus() {
+		SlidingMenus menu = new SlidingMenus(1, "校园活动", 0);
+		menu.getMenus().add(new SlidingMenus(5, "社会实践", 1));
+		menu.getMenus().add(new SlidingMenus(6, "素质拓展", 1));
+		menu.getMenus().add(new SlidingMenus(7, "志愿服务", 1));
+		menu.getMenus().add(new SlidingMenus(8, "科技创新", 1));
+		menus.add(menu);
+		menu = new SlidingMenus(2, "思想引领", 0);
+		menu.getMenus().add(new SlidingMenus(9, "党课培训", 2));
+		menu.getMenus().add(new SlidingMenus(10, "共青团教育", 2));
+		menu.getMenus().add(new SlidingMenus(11, "心灵分享", 2));
+		menus.add(menu);
+		menu = new SlidingMenus(3, "就业招聘", 0);
+		menu.getMenus().add(new SlidingMenus(12, "招聘信息", 3));
+		menu.getMenus().add(new SlidingMenus(13, "通知文件", 3));
+		menu.getMenus().add(new SlidingMenus(14, "就业政策", 3));
+		menu.getMenus().add(new SlidingMenus(15, "就业情况", 3));
+		menu.getMenus().add(new SlidingMenus(17, "创业情况", 3));
+		menu.getMenus().add(new SlidingMenus(21, "创业政策", 3));
+		menus.add(menu);
+		menu = new SlidingMenus(4, "出国留学", 0);
+		menu.getMenus().add(new SlidingMenus(18, "考研分析", 4));
+		menu.getMenus().add(new SlidingMenus(19, "考研动态", 4));
+		menu.getMenus().add(new SlidingMenus(20, "出国情况", 4));
+		menus.add(menu);
 	}
 
 	private View initViewPager() {
@@ -163,22 +195,26 @@ public class MainActivity extends Activity implements OnClickListener,
 			break;
 		case R.id.l3:
 			intent = new Intent(this, PagerListActivity.class);
-			intent.putExtra("id", "1");
+			intent.putExtra("tabSe", menus.get(0));
+			// intent.putExtra("id", "1");
 			startActivity(intent);
 			break;
 		case R.id.l4:
 			intent = new Intent(this, PagerListActivity.class);
-			intent.putExtra("id", "2");
+			intent.putExtra("tabSe", menus.get(1));
+			// intent.putExtra("id", "2");
 			startActivity(intent);
 			break;
 		case R.id.l5:
 			intent = new Intent(this, PagerListActivity.class);
-			intent.putExtra("id", "3");
+			intent.putExtra("tabSe", menus.get(2));
+			// intent.putExtra("id", "3");
 			startActivity(intent);
 			break;
 		case R.id.l6:
 			intent = new Intent(this, PagerListActivity.class);
-			intent.putExtra("id", "4");
+			intent.putExtra("tabSe", menus.get(3));
+			// intent.putExtra("id", "4");
 			startActivity(intent);
 			break;
 		case R.id.l7:

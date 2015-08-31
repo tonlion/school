@@ -17,6 +17,10 @@ public class PersonInfoActivity extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_person_info);
 		findViewById(R.id.person_image).setOnClickListener(this);
+		// 修改菜单栏
+		getActionBar().setDisplayHomeAsUpEnabled(true);
+		getActionBar().setTitle("个人信息");
+		getActionBar().setDisplayShowHomeEnabled(false);
 		// 请求数据得到姓名以及其余个人信息
 	}
 
@@ -28,7 +32,7 @@ public class PersonInfoActivity extends Activity implements OnClickListener {
 			View view = LayoutInflater.from(this).inflate(
 					R.layout.toast_change_image, null);
 			final PopupWindow window = new PopupWindow(view,
-					LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
+					LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
 			// 此方法以后要提取出，因为有三个点击事件
 			view.findViewById(R.id.exit).setOnClickListener(
 					new OnClickListener() {

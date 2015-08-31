@@ -1,13 +1,23 @@
 package com.example.entity;
 
-public class SlidingMenus {
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
+public class SlidingMenus implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int itemId;
 	private String itemName;
 	private int menuId;
+	private List<SlidingMenus> menus;
 
 	public SlidingMenus() {
 		super();
+		menus = new ArrayList<SlidingMenus>();
 	}
 
 	public SlidingMenus(int itemId, String itemName, int menuId) {
@@ -15,6 +25,7 @@ public class SlidingMenus {
 		this.itemId = itemId;
 		this.itemName = itemName;
 		this.menuId = menuId;
+		menus = new ArrayList<SlidingMenus>();
 	}
 
 	public int getItemId() {
@@ -39,6 +50,10 @@ public class SlidingMenus {
 
 	public void setMenuId(int menuId) {
 		this.menuId = menuId;
+	}
+
+	public List<SlidingMenus> getMenus() {
+		return menus;
 	}
 
 }

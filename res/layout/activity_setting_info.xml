@@ -45,8 +45,9 @@
     </RelativeLayout>
 
     <TextView
+        android:id="@+id/setting_change_pass"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:layout_marginTop="1dp"
         android:background="#afff"
         android:drawableRight="@drawable/cc_arrow_right"
@@ -58,7 +59,7 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:layout_marginTop="1dp"
         android:background="#afff"
         android:drawableRight="@drawable/cc_arrow_right"
@@ -70,7 +71,7 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:layout_marginTop="1dp"
         android:background="#afff"
         android:drawableRight="@drawable/cc_arrow_right"
@@ -80,25 +81,39 @@
         android:text="@string/versions"
         android:textSize="16sp" />
 
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:layout_marginTop="1dp"
         android:background="#afff"
-        android:drawableRight="@drawable/icon_switch_on"
         android:gravity="center_vertical"
         android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:text="@string/self_login"
-        android:textSize="16sp" />
+        android:paddingRight="10dp" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:text="@string/self_login"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/icon_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/icon_switch_on" />
+    </RelativeLayout>
 
     <Button
+        android:id="@+id/setting_exit"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="40dp"
-        android:background="#cf00"
+        android:background="@drawable/exit_btn"
         android:text="@string/user_out" />
 
 </LinearLayout>

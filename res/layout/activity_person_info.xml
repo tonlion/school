@@ -33,7 +33,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:layout_marginTop="20dp"
         android:background="#afff"
         android:gravity="center_vertical"
@@ -58,7 +58,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:layout_marginTop="1dp"
         android:background="#afff"
         android:gravity="center_vertical"
@@ -83,7 +83,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:layout_marginTop="1dp"
         android:background="#afff"
         android:gravity="center_vertical"
@@ -108,7 +108,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:layout_marginTop="1dp"
         android:background="#afff"
         android:gravity="center_vertical"
@@ -133,7 +133,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
+        android:layout_height="50dp"
         android:layout_marginTop="1dp"
         android:background="#afff"
         android:gravity="center_vertical"

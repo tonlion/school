@@ -28,6 +28,11 @@
             android:gravity="center_horizontal"
             android:text="@string/p_login"
             android:textSize="18sp" />
+        <!-- 只是为了去掉警告 -->
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="0dp" />
     </LinearLayout>
 
     <LinearLayout
