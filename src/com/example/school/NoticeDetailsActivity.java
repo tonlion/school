@@ -48,6 +48,9 @@ public class NoticeDetailsActivity extends Activity {
 		case R.id.action_settings:
 			Toast.makeText(this, " ’≤ÿ≥…π¶", Toast.LENGTH_SHORT).show();
 			break;
+		case android.R.id.home:
+			finish();
+			break;
 		}
 		return super.onOptionsItemSelected(item);
 	}

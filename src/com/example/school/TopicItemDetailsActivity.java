@@ -15,6 +15,7 @@ import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -40,6 +41,10 @@ public class TopicItemDetailsActivity extends Activity {
 		SchoolApplication.getInstance().getRequestQueue()
 				.add(manager.getTopicItemData(topic.getSubject_id()));
 		item.setAdapter(adapter);
+		// ÐÞ¸Äactionbar
+		getActionBar().setTitle("Ö÷Ìâ");
+		getActionBar().setDisplayHomeAsUpEnabled(true);
+		getActionBar().setDisplayShowHomeEnabled(false);
 	}
 
 	private Topic initListView() {
@@ -80,6 +85,15 @@ public class TopicItemDetailsActivity extends Activity {
 				image.setImageBitmap(result);
 			}
 		}
+	}
 
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case android.R.id.home:
+			finish();
+			break;
+		}
+		return super.onOptionsItemSelected(item);
 	}
 }

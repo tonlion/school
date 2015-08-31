@@ -12,6 +12,7 @@ import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.MenuItem;
 
 public class NoticeListActivity extends Activity {
 
@@ -36,5 +37,15 @@ public class NoticeListActivity extends Activity {
 		DataManager manager = new DataManager(nAdapter, notices, this, null);
 		SchoolApplication.getInstance().getRequestQueue()
 				.add(manager.getNoticeData(false));
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case android.R.id.home:
+			finish();
+			break;
+		}
+		return super.onOptionsItemSelected(item);
 	}
 }
