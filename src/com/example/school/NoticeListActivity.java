@@ -31,6 +31,10 @@ public class NoticeListActivity extends Activity {
 		nAdapter = new NoticeListAdapter(notices, this);
 		initData();
 		notice.setAdapter(nAdapter);
+		// 修改actionbar
+		getActionBar().setTitle("动态列表");
+		getActionBar().setDisplayHomeAsUpEnabled(true);
+		getActionBar().setDisplayShowHomeEnabled(false);
 	}
 
 	private void initData() {

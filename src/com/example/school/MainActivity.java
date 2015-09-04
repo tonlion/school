@@ -5,10 +5,13 @@ import java.util.List;
 import com.example.adapter.NoticeListAdapter;
 import com.example.adapter.TopicListAdapter;
 import com.example.adapter.ViewPagerAdapter;
+import com.example.application.ActivityManager;
 import com.example.application.SchoolApplication;
+import com.example.async.MyAsyncTask;
 import com.example.data.DataManager;
 import com.example.entity.Notice;
 import com.example.entity.SlidingMenus;
+import com.example.entity.Student;
 import com.example.entity.Topic;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.Mode;
@@ -29,6 +32,7 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 
 public class MainActivity extends Activity implements OnClickListener,
 		OnPageChangeListener, OnRefreshListener2<ListView> {
@@ -43,6 +47,7 @@ public class MainActivity extends Activity implements OnClickListener,
 	private NoticeListAdapter adapter2;
 	private PullToRefreshListView notice;
 	private List<SlidingMenus> menus;
+	private ImageView stuImg;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +63,8 @@ public class MainActivity extends Activity implements OnClickListener,
 		initTabMenus();
 		// ÐÞ¸Ä×´Ì¬À¸
 		getActionBar().setDisplayShowHomeEnabled(false);
+		// Ñ¹ÈëÕ»
+		ActivityManager.getInstance().pushActivity(this);
 	}
 
 	private void initTabMenus() {
@@ -123,6 +130,12 @@ public class MainActivity extends Activity implements OnClickListener,
 		menu.attachToActivity(this, SlidingMenu.SLIDING_CONTENT);
 		menu.setBehindOffset(300);
 		notice.getRefreshableView().addHeaderView(v2);
+		Student student = SchoolApplication.getInstance().getStudent();
+		stuImg = (ImageView) v.findViewById(R.id.stu_img);
+		MyAsyncTask task = new MyAsyncTask(stuImg);
+		task.execute(student.getImg());
+		TextView stuName = (TextView) v.findViewById(R.id.stu_name);
+		stuName.setText("Ñ§ºÅ£º" + student.getStuName());
 	}
 
 	private void initView() {
@@ -218,7 +231,7 @@ public class MainActivity extends Activity implements OnClickListener,
 			startActivity(intent);
 			break;
 		case R.id.l7:
-			intent = new Intent(this, PagerListActivity.class);
+			intent = new Intent(this, ToolsActivity.class);
 			// intent.putExtra("id", "5");
 			startActivity(intent);
 			break;

@@ -21,6 +21,7 @@
     <string name="self_login">自动登录</string>
     <string name="name">姓名</string>
     <string name="sex">性别</string>
+    <string name="role">角色</string>
     <string name="class_num">班级</string>
     <string name="domain">专业</string>
     <string name="faculty">院系</string>

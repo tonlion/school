@@ -1,5 +1,6 @@
 package com.example.school;
 
+import com.example.data.DataManager;
 import com.example.entity.Notice;
 
 import android.app.Activity;
@@ -7,7 +8,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,7 +26,7 @@ public class NoticeDetailsActivity extends Activity {
 		setContentView(R.layout.layout_notice_detail);
 		// 修改菜单栏
 		getActionBar().setDisplayHomeAsUpEnabled(true);
-		getActionBar().setTitle("信息详情");
+		getActionBar().setTitle("动态详情");
 		getActionBar().setDisplayShowHomeEnabled(false);
 		Intent intent = getIntent();
 		Notice notice = (Notice) intent.getSerializableExtra("noticeSe");
@@ -32,8 +35,13 @@ public class NoticeDetailsActivity extends Activity {
 		content = (WebView) findViewById(R.id.notice_details_content);
 		title.setText(notice.getTitle());
 		date.setText(notice.getTime());
-		content.loadDataWithBaseURL(null, notice.getContent(), "text/html",
+		// 修改webview的默认属性
+		WebSettings settings = content.getSettings();
+		settings.setDefaultTextEncodingName("utf-8");
+		content.loadDataWithBaseURL(DataManager.IP_URL, notice.getContent(), "text/html",
 				"utf-8", null);
+		// 更改点击链接浏览器打开，修改默认行为
+		content.setWebViewClient(new WebViewClient());
 	}
 
 	@Override

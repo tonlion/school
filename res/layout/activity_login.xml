@@ -26,6 +26,7 @@
         android:background="@drawable/login_edit_onchecked"
         android:drawableLeft="@drawable/login_password_white"
         android:hint="@string/login_pass"
+        android:inputType="textPassword"
         android:paddingBottom="10dp"
         android:paddingLeft="5dp"
         android:paddingTop="10dp" />
@@ -43,14 +44,16 @@
             android:id="@+id/remember_pass"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/rem_pass" />
+            android:text="@string/rem_pass"
+            android:checked="true" />
 
         <CheckBox
             android:id="@+id/login_self"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:text="@string/login_myself" />
+            android:text="@string/login_myself"
+            android:checked="true" />
     </RelativeLayout>
 
     <Button
