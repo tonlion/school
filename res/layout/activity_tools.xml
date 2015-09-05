@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="10dp" >
+    android:background="@color/background" >
 
     <TextView
         android:layout_width="match_parent"
@@ -11,6 +11,9 @@
         android:layout_marginBottom="1dp"
         android:gravity="bottom"
         android:paddingBottom="5dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:background="@color/Foreground"
         android:text="烟台主页链接" />
 
     <LinearLayout

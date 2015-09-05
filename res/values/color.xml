@@ -8,4 +8,6 @@
     <color name="blackgrey">#555</color>
     <color name="black">#000</color>
     <color name="back">#afff</color>
+    <color name="Foreground">#afff</color>
+    <color name="background">#aeee</color>
 </resources>

@@ -365,7 +365,9 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int viewBehind=0x7f010020;
     }
     public static final class color {
+        public static final int Foreground=0x7f050009;
         public static final int back=0x7f050008;
+        public static final int background=0x7f05000a;
         public static final int background_tab_pressed=0x7f050000;
         public static final int black=0x7f050007;
         public static final int blackgrey=0x7f050006;
@@ -373,8 +375,8 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int darklue=0x7f050002;
         public static final int lightgrey=0x7f050004;
         public static final int lightlue=0x7f050001;
-        public static final int radio_onchecked=0x7f050009;
-        public static final int slide_onpressed=0x7f05000a;
+        public static final int radio_onchecked=0x7f05000b;
+        public static final int slide_onpressed=0x7f05000c;
         public static final int write=0x7f050003;
     }
     public static final class dimen {

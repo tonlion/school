@@ -94,10 +94,10 @@ public class SettingInfoActivity extends Activity implements OnClickListener {
 				file.delete();
 				startActivity(new Intent(SettingInfoActivity.this,
 						LoginActivity.class));
-				// 结束进程
-				android.os.Process.killProcess(android.os.Process.myPid());
 				// 删除所有的activity
 				ActivityManager.getInstance().finishAllActivity();
+				// 结束进程
+				android.os.Process.killProcess(android.os.Process.myPid());
 			}
 			break;
 		}

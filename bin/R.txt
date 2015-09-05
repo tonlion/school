@@ -50,7 +50,9 @@ int attr touchModeAbove 0x7f010024
 int attr touchModeBehind 0x7f010025
 int attr viewAbove 0x7f01001f
 int attr viewBehind 0x7f010020
+int color Foreground 0x7f050009
 int color back 0x7f050008
+int color background 0x7f05000a
 int color background_tab_pressed 0x7f050000
 int color black 0x7f050007
 int color blackgrey 0x7f050006
@@ -58,8 +60,8 @@ int color darkgrey 0x7f050005
 int color darklue 0x7f050002
 int color lightgrey 0x7f050004
 int color lightlue 0x7f050001
-int color radio_onchecked 0x7f050009
-int color slide_onpressed 0x7f05000a
+int color radio_onchecked 0x7f05000b
+int color slide_onpressed 0x7f05000c
 int color write 0x7f050003
 int dimen activity_horizontal_margin 0x7f070005
 int dimen activity_margin_left 0x7f070008
