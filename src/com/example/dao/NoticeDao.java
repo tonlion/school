@@ -8,7 +8,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.data.TableMessage.NoticeTable;
-import com.example.data.TableMessage.TopicTable;
 import com.example.database.DataBaseHelper;
 import com.example.entity.Notice;
 

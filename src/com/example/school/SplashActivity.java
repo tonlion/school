@@ -1,7 +1,7 @@
 package com.example.school;
 
+import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.Response.ErrorListener;
 import com.android.volley.Response.Listener;
 import com.example.application.SchoolApplication;
 import com.example.dao.StudentDao;
@@ -64,16 +64,17 @@ public class SplashActivity extends Activity {
 									LoginActivity.class);
 						}
 					}
-				}, new ErrorListener() {
+				}, new Response.ErrorListener() {
 					@Override
 					public void onErrorResponse(VolleyError arg0) {
+						// 修改联网的时间
+						Toast.makeText(SplashActivity.this, "这里出错",
+								Toast.LENGTH_SHORT).show();
 						// 没网的情况下，直接进入主界面，读取个人信息
 						StudentDao dao = new StudentDao(SplashActivity.this);
 						dao.findByUno(sp1.getString("userName", ""));
 						intent = new Intent(SplashActivity.this,
 								LoginActivity.class);
-						Toast.makeText(SplashActivity.this, "这里出错",
-								Toast.LENGTH_SHORT).show();
 					}
 				});
 				post.setParams("userName", sp1.getString("userName", ""));
@@ -90,6 +91,6 @@ public class SplashActivity extends Activity {
 				startActivity(intent);
 				finish();
 			}
-		}, 2000);
+		}, 10000);
 	}
 }
