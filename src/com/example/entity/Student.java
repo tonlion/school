@@ -9,8 +9,8 @@ public class Student implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private String uno;
 	private String stuName;
-	private String majorNO;
-	private String classNO;
+	private int majorNO;
+	private int classNO;
 	private String majorName;
 	private String className;
 	private String role;
@@ -23,7 +23,7 @@ public class Student implements Serializable {
 		super();
 	}
 
-	public Student(String uno, String stuName, String majorNO, String classNO,
+	public Student(String uno, String stuName, int majorNO, int classNO,
 			String majorName, String className, String role, String pwd,
 			String img, int isRead, String smsright) {
 		super();
@@ -56,19 +56,19 @@ public class Student implements Serializable {
 		this.stuName = stuName;
 	}
 
-	public String getMajorNO() {
+	public int getMajorNO() {
 		return majorNO;
 	}
 
-	public void setMajorNO(String majorNO) {
+	public void setMajorNO(int majorNO) {
 		this.majorNO = majorNO;
 	}
 
-	public String getClassNO() {
+	public int getClassNO() {
 		return classNO;
 	}
 
-	public void setClassNO(String classNO) {
+	public void setClassNO(int classNO) {
 		this.classNO = classNO;
 	}
 

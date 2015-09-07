@@ -1,8 +1,10 @@
 package com.example.school;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
@@ -18,6 +20,10 @@ public class ToolsActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_tools);
+		ActionBar bar = getActionBar();
+		bar.setDisplayHomeAsUpEnabled(true);
+		bar.setTitle("±ãÀû¹¤¾ß");
+		bar.setDisplayShowHomeEnabled(false);
 		insert = (LinearLayout) findViewById(R.id.insert);
 		LayoutParams lp = new LayoutParams(LayoutParams.MATCH_PARENT,
 				LayoutParams.WRAP_CONTENT);
@@ -49,5 +55,15 @@ public class ToolsActivity extends Activity {
 		text.setBackgroundResource(R.drawable.backgroud);
 		text.setTextSize(16);
 		return text;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case android.R.id.home:
+			finish();
+			break;
+		}
+		return super.onOptionsItemSelected(item);
 	}
 }

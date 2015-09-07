@@ -4,6 +4,7 @@ import com.android.volley.Response.ErrorListener;
 import com.android.volley.Response.Listener;
 import com.android.volley.VolleyError;
 import com.example.application.SchoolApplication;
+import com.example.dao.StudentDao;
 import com.example.data.DataManager;
 import com.example.entity.Student;
 import com.example.volley.PostRequest;
@@ -88,6 +89,10 @@ public class LoginActivity extends Activity implements OnClickListener {
 						// 添加到application
 						// 正确跳转，用户名密码正确
 						SchoolApplication.getInstance().setStudent(student);
+						// 用户信息保存到和本地数据库
+						StudentDao dao = new StudentDao(LoginActivity.this);
+						dao.addUser(student);
+						// 放到子线程中执行
 						startActivity(new Intent(LoginActivity.this,
 								MainActivity.class));
 						new Handler().postDelayed(new Runnable() {

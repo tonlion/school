@@ -144,7 +144,7 @@ public class MainActivity extends Activity implements OnClickListener,
 		notices = new ArrayList<Notice>();
 		tAdapter = new TopicListAdapter(topics, MainActivity.this);
 		adapter2 = new NoticeListAdapter(notices, MainActivity.this);
-		initData();
+		initData();		
 		topic.setAdapter(tAdapter);
 		notice.setAdapter(adapter2);
 	}

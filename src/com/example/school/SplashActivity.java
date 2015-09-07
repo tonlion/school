@@ -4,6 +4,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.Response.ErrorListener;
 import com.android.volley.Response.Listener;
 import com.example.application.SchoolApplication;
+import com.example.dao.StudentDao;
 import com.example.data.DataManager;
 import com.example.entity.Student;
 import com.example.volley.PostRequest;
@@ -16,6 +17,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Window;
+import android.widget.Toast;
 
 public class SplashActivity extends Activity {
 
@@ -35,7 +37,7 @@ public class SplashActivity extends Activity {
 			intent = new Intent(this, FirstReadActivity.class);
 		} else {
 			// 判断本地保存的数据是否与服务器相同
-			SharedPreferences sp1 = getSharedPreferences("stuInfo",
+			final SharedPreferences sp1 = getSharedPreferences("stuInfo",
 					MODE_PRIVATE);
 			// 连接服务器，判断用户是否进行修改，判断是否选中自动登录
 			if (sp1.getBoolean("loginSelf", false)) {
@@ -50,6 +52,9 @@ public class SplashActivity extends Activity {
 									}.getType());
 							// 添加到application
 							SchoolApplication.getInstance().setStudent(student);
+							// 删除以保存的当前用户信息，然后插入网络最新的信息
+							StudentDao dao = new StudentDao(SplashActivity.this);
+							dao.saveOrUpdate(student);
 							// 用户名密码相同正确时
 							intent = new Intent(SplashActivity.this,
 									MainActivity.class);
@@ -62,8 +67,13 @@ public class SplashActivity extends Activity {
 				}, new ErrorListener() {
 					@Override
 					public void onErrorResponse(VolleyError arg0) {
+						// 没网的情况下，直接进入主界面，读取个人信息
+						StudentDao dao = new StudentDao(SplashActivity.this);
+						dao.findByUno(sp1.getString("userName", ""));
 						intent = new Intent(SplashActivity.this,
 								LoginActivity.class);
+						Toast.makeText(SplashActivity.this, "这里出错",
+								Toast.LENGTH_SHORT).show();
 					}
 				});
 				post.setParams("userName", sp1.getString("userName", ""));

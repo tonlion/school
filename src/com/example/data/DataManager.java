@@ -11,6 +11,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.Response.Listener;
 import com.example.adapter.NoticeListAdapter;
 import com.example.adapter.TopicListAdapter;
+import com.example.dao.NoticeDao;
+import com.example.dao.TopicDao;
 import com.example.entity.Notice;
 import com.example.entity.Topic;
 import com.example.volley.PostRequest;
@@ -20,7 +22,7 @@ import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
 public class DataManager {
 
-	public final static String IP_URL = "http://192.168.253.1/";// IP地址
+	public final static String IP_URL = "http://172.25.208.1/";// IP地址
 	public final static String ROOT_URL = IP_URL + "SchoolLife/";// 根目录
 	public final static String NEWSREQUEST_URL = ROOT_URL// 数据访问目录
 			+ "NewsRequestServlet";
@@ -90,6 +92,11 @@ public class DataManager {
 									}.getType());
 							topics.clear();
 							topics.addAll(list);
+							// 缓存数据到本地
+							TopicDao tDao = new TopicDao(context);
+							for (Topic t : topics) {
+								tDao.addTopic(t);
+							}
 							tAdapter.notifyDataSetChanged();
 						}
 					}
@@ -127,6 +134,11 @@ public class DataManager {
 							if (isTop)
 								notices.clear();
 							notices.addAll(list);
+							// 数据缓存到本地
+							NoticeDao nDao = new NoticeDao(context);
+							for (Notice n : list) {
+								nDao.addNotice(n);
+							}
 							nAdapter.notifyDataSetChanged();
 						}
 					}
