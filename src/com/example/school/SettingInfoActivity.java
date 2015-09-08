@@ -78,10 +78,10 @@ public class SettingInfoActivity extends Activity implements OnClickListener {
 			sp = getSharedPreferences("stuInfo", MODE_PRIVATE);
 			flag = sp.getBoolean("loginSelf", false);
 			if (flag) {
-				icon.setImageResource(R.drawable.icon_switch_on);
+				icon.setImageResource(R.drawable.icon_switch_off);
 				editor.putBoolean("loginSelf", false);
 			} else {
-				icon.setImageResource(R.drawable.icon_switch_off);
+				icon.setImageResource(R.drawable.icon_switch_on);
 				editor.putBoolean("loginSelf", true);
 			}
 			editor.commit();

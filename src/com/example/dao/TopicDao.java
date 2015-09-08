@@ -20,6 +20,17 @@ public class TopicDao {
 	}
 
 	/**
+	 * 添加多条记录
+	 * 
+	 * @param topics
+	 */
+	public void addMoreTopic(List<Topic> topics) {
+		for (Topic t : topics) {
+			addTopic(t);
+		}
+	}
+
+	/**
 	 * 添加用户信息
 	 * 
 	 * @param user
@@ -46,8 +57,8 @@ public class TopicDao {
 	 * 
 	 * @return
 	 */
-	public List<Topic> AllStudent() {
-		return findStudent(null, null);
+	public List<Topic> allTopic() {
+		return findTopic(null, null);
 	}
 
 	/**
@@ -59,7 +70,7 @@ public class TopicDao {
 	 *            条件对应的值
 	 * @return
 	 */
-	public List<Topic> findStudent(String[] select, String[] values) {
+	public List<Topic> findTopic(String[] select, String[] values) {
 		SQLiteDatabase database = helper.getReadableDatabase();
 		List<Topic> users = new ArrayList<Topic>();
 		String findSQL = "select * from " + TopicTable.TABLE_NAME;

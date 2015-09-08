@@ -8,6 +8,8 @@ import com.example.adapter.ViewPagerAdapter;
 import com.example.application.ActivityManager;
 import com.example.application.SchoolApplication;
 import com.example.async.MyAsyncTask;
+import com.example.dao.NoticeDao;
+import com.example.dao.TopicDao;
 import com.example.data.DataManager;
 import com.example.entity.Notice;
 import com.example.entity.SlidingMenus;
@@ -48,6 +50,7 @@ public class MainActivity extends Activity implements OnClickListener,
 	private PullToRefreshListView notice;
 	private List<SlidingMenus> menus;
 	private ImageView stuImg;
+	private Student student;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -130,21 +133,32 @@ public class MainActivity extends Activity implements OnClickListener,
 		menu.attachToActivity(this, SlidingMenu.SLIDING_CONTENT);
 		menu.setBehindOffset(300);
 		notice.getRefreshableView().addHeaderView(v2);
-		Student student = SchoolApplication.getInstance().getStudent();
+		student = SchoolApplication.getInstance().getStudent();
 		stuImg = (ImageView) v.findViewById(R.id.stu_img);
-		MyAsyncTask task = new MyAsyncTask(stuImg);
-		task.execute(student.getImg());
 		TextView stuName = (TextView) v.findViewById(R.id.stu_name);
-		stuName.setText("学号：" + student.getStuName());
+		// 当用户未登陆时
+		if (student != null) {
+			MyAsyncTask task = new MyAsyncTask(stuImg);
+			task.execute(student.getImg());
+			stuName.setText("学号：" + student.getStuName());
+		}
 	}
 
 	private void initView() {
 		// 专题列表 动态列表添加数据
 		topics = new ArrayList<Topic>();
 		notices = new ArrayList<Notice>();
+		// 从本地数据库得到数据
+		TopicDao tDao = new TopicDao(getApplicationContext());
+		topics = tDao.allTopic();
+		NoticeDao nDao = new NoticeDao(getApplicationContext());
+		notices = nDao.allNotice();
 		tAdapter = new TopicListAdapter(topics, MainActivity.this);
 		adapter2 = new NoticeListAdapter(notices, MainActivity.this);
-		initData();		
+		// 如果没有得到数据，就联网查询
+		if (topics.size() == 0 || topics == null) {
+			initData();
+		}
 		topic.setAdapter(tAdapter);
 		notice.setAdapter(adapter2);
 	}
@@ -181,8 +195,8 @@ public class MainActivity extends Activity implements OnClickListener,
 		SchoolApplication.getInstance().getRequestQueue()
 				.add(data2.getTopicData(1));
 		DataManager data = new DataManager(adapter2, notices, this, notice);
-		SchoolApplication.getInstance().getRequestQueue()
-				.add(data.getNoticeData(true));
+		// SchoolApplication.getInstance().getRequestQueue()
+		// .add(data.getNoticeData(true));
 		SchoolApplication.getInstance().getRequestQueue()
 				.add(data.getNoticeData(false));
 	}
@@ -199,40 +213,39 @@ public class MainActivity extends Activity implements OnClickListener,
 			// 跳转到新页
 			break;
 		case R.id.l1:
-			startActivity(new Intent(this, SettingInfoActivity.class));
+			if (student != null) {
+				startActivity(new Intent(this, SettingInfoActivity.class));
+			} else {
+				ActivityManager.getInstance().finishAllActivity();
+				startActivity(new Intent(this, LoginActivity.class));
+			}
 			break;
 		case R.id.l2:
 			Intent intent = new Intent(this, PagerListActivity.class);
-			// intent.putExtra("id", "0");
 			startActivity(intent);
 			break;
 		case R.id.l3:
 			intent = new Intent(this, PagerListActivity.class);
 			intent.putExtra("tabSe", menus.get(0));
-			// intent.putExtra("id", "1");
 			startActivity(intent);
 			break;
 		case R.id.l4:
 			intent = new Intent(this, PagerListActivity.class);
 			intent.putExtra("tabSe", menus.get(1));
-			// intent.putExtra("id", "2");
 			startActivity(intent);
 			break;
 		case R.id.l5:
 			intent = new Intent(this, PagerListActivity.class);
 			intent.putExtra("tabSe", menus.get(2));
-			// intent.putExtra("id", "3");
 			startActivity(intent);
 			break;
 		case R.id.l6:
 			intent = new Intent(this, PagerListActivity.class);
 			intent.putExtra("tabSe", menus.get(3));
-			// intent.putExtra("id", "4");
 			startActivity(intent);
 			break;
 		case R.id.l7:
 			intent = new Intent(this, ToolsActivity.class);
-			// intent.putExtra("id", "5");
 			startActivity(intent);
 			break;
 		}

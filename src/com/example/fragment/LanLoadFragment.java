@@ -8,7 +8,6 @@ public abstract class LanLoadFragment extends Fragment {
 
 	@Override
 	public void setUserVisibleHint(boolean isVisibleToUser) {
-		// TODO Auto-generated method stub
 		super.setUserVisibleHint(isVisibleToUser);
 		if (isVisibleToUser) {
 			isVisible = true;

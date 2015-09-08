@@ -11,6 +11,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.Response.Listener;
 import com.example.adapter.NoticeListAdapter;
 import com.example.adapter.TopicListAdapter;
+import com.example.async.ThreadManager;
 import com.example.dao.NoticeDao;
 import com.example.dao.TopicDao;
 import com.example.entity.Notice;
@@ -93,10 +94,14 @@ public class DataManager {
 							topics.clear();
 							topics.addAll(list);
 							// 缓存数据到本地
-							TopicDao tDao = new TopicDao(context);
-							for (Topic t : topics) {
-								tDao.addTopic(t);
-							}
+							ThreadManager.getInetance().execute(new Runnable() {
+
+								@Override
+								public void run() {
+									TopicDao tDao = new TopicDao(context);
+									tDao.addMoreTopic(topics);
+								}
+							});
 							tAdapter.notifyDataSetChanged();
 						}
 					}
@@ -135,10 +140,14 @@ public class DataManager {
 								notices.clear();
 							notices.addAll(list);
 							// 数据缓存到本地
-							NoticeDao nDao = new NoticeDao(context);
-							for (Notice n : list) {
-								nDao.addNotice(n);
-							}
+							ThreadManager.getInetance().execute(new Runnable() {
+
+								@Override
+								public void run() {
+									NoticeDao nDao = new NoticeDao(context);
+									nDao.addMoreNotice(notices);
+								}
+							});
 							nAdapter.notifyDataSetChanged();
 						}
 					}
@@ -158,6 +167,7 @@ public class DataManager {
 		return post;
 	}
 
+	// 得到的大类的所有数据
 	public PostRequest getTopicItemData(int subjectId) {
 		PostRequest post = new PostRequest(NEWSREQUEST_URL,
 				new Listener<String>() {
@@ -191,7 +201,7 @@ public class DataManager {
 		return post;
 	}
 
-	// 只为加载不同数据类时调用
+	// 只为加载相同数据类的不同小类时调用
 	public PostRequest getNoticeTypeData(int category) {
 		if (listView != null)
 			listView.setRefreshing(); // 设置进入页面时自动刷新

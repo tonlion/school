@@ -20,6 +20,17 @@ public class NoticeDao {
 	}
 
 	/**
+	 * 插入多条信息
+	 * 
+	 * @param notices
+	 */
+	public void addMoreNotice(List<Notice> notices) {
+		for (Notice n : notices) {
+			addNotice(n);
+		}
+	}
+
+	/**
 	 * 添加用户信息
 	 * 
 	 * @param user
@@ -55,8 +66,8 @@ public class NoticeDao {
 	 * 
 	 * @return
 	 */
-	public List<Notice> AllStudent() {
-		return findStudent(null, null);
+	public List<Notice> allNotice() {
+		return findNotice(null, null);
 	}
 
 	/**
@@ -68,7 +79,7 @@ public class NoticeDao {
 	 *            条件对应的值
 	 * @return
 	 */
-	public List<Notice> findStudent(String[] select, String[] values) {
+	public List<Notice> findNotice(String[] select, String[] values) {
 		SQLiteDatabase database = helper.getReadableDatabase();
 		List<Notice> users = new ArrayList<Notice>();
 		String findSQL = "select * from " + NoticeTable.TABLE_NAME;

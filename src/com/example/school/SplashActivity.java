@@ -1,5 +1,7 @@
 package com.example.school;
 
+import java.util.List;
+
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.Response.Listener;
@@ -68,13 +70,18 @@ public class SplashActivity extends Activity {
 					@Override
 					public void onErrorResponse(VolleyError arg0) {
 						// 修改联网的时间
-						Toast.makeText(SplashActivity.this, "这里出错",
+						Toast.makeText(SplashActivity.this, "联网出错",
 								Toast.LENGTH_SHORT).show();
 						// 没网的情况下，直接进入主界面，读取个人信息
 						StudentDao dao = new StudentDao(SplashActivity.this);
-						dao.findByUno(sp1.getString("userName", ""));
+						List<Student> students = dao.findByUno(sp1.getString(
+								"userName", ""));
+						if (!(students.size() == 0 || students == null)) {
+							SchoolApplication.getInstance().setStudent(
+									students.get(0));
+						}
 						intent = new Intent(SplashActivity.this,
-								LoginActivity.class);
+								MainActivity.class);
 					}
 				});
 				post.setParams("userName", sp1.getString("userName", ""));
@@ -91,6 +98,6 @@ public class SplashActivity extends Activity {
 				startActivity(intent);
 				finish();
 			}
-		}, 10000);
+		}, 8000);
 	}
 }

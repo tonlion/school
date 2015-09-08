@@ -36,7 +36,8 @@ public class LoginActivity extends Activity implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
-		findViewById(R.id.login_btn).setOnClickListener(LoginActivity.this);
+		findViewById(R.id.login_btn).setOnClickListener(this);
+		findViewById(R.id.main_btn).setOnClickListener(this);
 		loginSelf = (CheckBox) findViewById(R.id.login_self);
 		rememberPass = (CheckBox) findViewById(R.id.remember_pass);
 		stuName = (TextView) findViewById(R.id.login_name);
@@ -77,6 +78,10 @@ public class LoginActivity extends Activity implements OnClickListener {
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
+		case R.id.main_btn:
+			startActivity(new Intent(this, MainActivity.class));
+			finish();
+			break;
 		case R.id.login_btn:
 			PostRequest post = new PostRequest(DataManager.ROOT_URL
 					+ "LoginServlet", new Listener<String>() {

@@ -37,5 +37,6 @@
     <string name="kycg">考研出国</string>
     <string name="blgj">便利工具</string>
     <string name="collection">收藏</string>
+    <string name="intent_to_main">稍后登录</string>
 
 </resources>
