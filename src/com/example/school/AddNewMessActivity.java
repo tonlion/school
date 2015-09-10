@@ -66,8 +66,12 @@ public class AddNewMessActivity extends Activity implements OnClickListener,
 			break;
 		// 点击actionbar上的图标时
 		case R.id.find_person:
+			/*
+			 * startActivity(new Intent(getApplicationContext(),
+			 * ConnectionManActivity.class));
+			 */
 			startActivity(new Intent(getApplicationContext(),
-					ConnectionManActivity.class));
+					ConnectionManActivity2.class));
 			break;
 		}
 		return super.onOptionsItemSelected(item);

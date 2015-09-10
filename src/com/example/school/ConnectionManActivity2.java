@@ -5,55 +5,43 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.android.volley.Response.ErrorListener;
-import com.android.volley.Response.Listener;
-import com.android.volley.VolleyError;
 import com.example.adapter.ConnectionAdapter;
-import com.example.application.SchoolApplication;
-import com.example.data.DataManager;
-import com.example.entity.Clzss;
-import com.example.entity.Major;
-import com.example.entity.Role;
+import com.example.adapter.ConnectionAdapter.OnContectChooseListener;
 import com.example.entity.Student;
-import com.example.volley.PostRequest;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
-public class ConnectionManActivity2 extends Activity {
+public class ConnectionManActivity2 extends Activity implements
+		OnContectChooseListener {
 
-	private ScrollView messTitle;
 	private List<Map<String, String>> items;
-	private List<Major> majors;
-	private List<Role> roles;
-	private List<Clzss> clzsses;
-	private List<Student> students;
 	private LinearLayout topMenu;
+	private ListView lv;
+	private TextView choose;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_connection_man);
 		topMenu = (LinearLayout) findViewById(R.id.menu_item);
-		// 为顶部添加点击按钮
+		choose = (TextView) findViewById(R.id.choose_mess);
 		addTextView("校园通", topMenu);
+		// 为顶部添加点击按钮
 		initData();
 		View v = LayoutInflater.from(getApplicationContext()).inflate(
 				R.layout.c_list_view, null);
-		final ListView lv = (ListView) v.findViewById(R.id.c_listview);
+		lv = (ListView) v.findViewById(R.id.c_listview);
 		ConnectionAdapter cAdapter = new ConnectionAdapter(items,
-				getApplicationContext());
+				getApplicationContext(), lv, topMenu);
 		lv.setAdapter(cAdapter);
+		cAdapter.setListener(this);
 		LinearLayout l = (LinearLayout) findViewById(R.id.messages);
 		l.addView(v);
 		// 设置actionbar
@@ -67,54 +55,6 @@ public class ConnectionManActivity2 extends Activity {
 				.inflate(R.layout.text_view, null);
 		t.setText(text);
 		ll.addView(t);
-	}
-
-	private void getMajorMess(final BaseAdapter sAdapter, String type) {
-		PostRequest post = new PostRequest(DataManager.ROOT_URL
-				+ "NewsPushServlet", new Listener<String>() {
-
-			@Override
-			public void onResponse(String arg0) {
-				Gson gson = new Gson();
-				List<Major> list = gson.fromJson(arg0,
-						new TypeToken<List<Major>>() {
-						}.getType());
-				majors.clear();
-				majors.addAll(list);
-				sAdapter.notifyDataSetChanged();
-			}
-		}, new ErrorListener() {
-
-			@Override
-			public void onErrorResponse(VolleyError arg0) {
-			}
-		});
-		post.setParams("dataType", type);
-		SchoolApplication.getInstance().getRequestQueue().add(post);
-	}
-
-	private void getRoleMess(final BaseAdapter sAdapter, String type) {
-		PostRequest post = new PostRequest(DataManager.ROOT_URL
-				+ "NewsPushServlet", new Listener<String>() {
-
-			@Override
-			public void onResponse(String arg0) {
-				Gson gson = new Gson();
-				List<Role> list = gson.fromJson(arg0,
-						new TypeToken<List<Role>>() {
-						}.getType());
-				roles.clear();
-				roles.addAll(list);
-				sAdapter.notifyDataSetChanged();
-			}
-		}, new ErrorListener() {
-
-			@Override
-			public void onErrorResponse(VolleyError arg0) {
-			}
-		});
-		post.setParams("dataType", type);
-		SchoolApplication.getInstance().getRequestQueue().add(post);
 	}
 
 	@Override
@@ -136,4 +76,22 @@ public class ConnectionManActivity2 extends Activity {
 		map.put("typeName", "职务");
 		items.add(map);
 	}
+
+	List<Student> students = new ArrayList<Student>();
+
+	@Override
+	public void contectChooseListener(Object obj, boolean select) {
+		Student s = (Student) obj;
+		if (select) {
+			students.add(s);
+		} else {
+			students.remove(s);
+		}
+		StringBuilder builder = new StringBuilder();
+		for (Student stu : students) {
+			builder.append(stu.getStuName());
+		}
+		choose.setText(builder.toString());
+	}
+
 }

@@ -11,6 +11,7 @@ import com.example.application.SchoolApplication;
 import com.example.entity.Clzss;
 import com.example.entity.Contection;
 import com.example.entity.Major;
+import com.example.entity.Role;
 import com.example.entity.Student;
 import com.example.volley.PostRequest;
 import com.google.gson.Gson;
@@ -61,7 +62,7 @@ public class GsonValue {
 	 * 
 	 * @param majorId
 	 */
-	public void getRoleMess(int majorId) {
+	public void getClzssMess(int majorId) {
 		PostRequest post = new PostRequest(NewsPushServlet,
 				new Listener<String>() {
 
@@ -92,7 +93,7 @@ public class GsonValue {
 	 * 
 	 * @param classNo
 	 */
-	public void getClzssMess(int classNo) {
+	public void getStudentMess(int classNo) {
 		PostRequest post = new PostRequest(NewsPushServlet,
 				new Listener<String>() {
 
@@ -115,6 +116,65 @@ public class GsonValue {
 				});
 		post.setParams("dataType", "classtostudent");
 		post.setParams("majorId", classNo + "");
+		SchoolApplication.getInstance().getRequestQueue().add(post);
+	}
+
+	/**
+	 * 得到角色
+	 */
+	public void getRoleMess() {
+		PostRequest post = new PostRequest(NewsPushServlet,
+				new Listener<String>() {
+
+					@Override
+					public void onResponse(String arg0) {
+						Gson gson = new Gson();
+						List<Role> list = gson.fromJson(arg0,
+								new TypeToken<List<Role>>() {
+								}.getType());
+						for (Role s : list) {
+							contections.add(new Contection(1, s.getRole(),
+									"role"));
+						}
+					}
+				}, new ErrorListener() {
+
+					@Override
+					public void onErrorResponse(VolleyError arg0) {
+					}
+				});
+		post.setParams("dataType", "role");
+		SchoolApplication.getInstance().getRequestQueue().add(post);
+	}
+
+	/**
+	 * 得到角色下的人
+	 * 
+	 * @param role
+	 */
+	public void getRoleToStuMess(String role) {
+		PostRequest post = new PostRequest(NewsPushServlet,
+				new Listener<String>() {
+
+					@Override
+					public void onResponse(String arg0) {
+						Gson gson = new Gson();
+						List<Student> list = gson.fromJson(arg0,
+								new TypeToken<List<Student>>() {
+								}.getType());
+						for (Student s : list) {
+
+							contections.add(new Contection());
+						}
+					}
+				}, new ErrorListener() {
+
+					@Override
+					public void onErrorResponse(VolleyError arg0) {
+					}
+				});
+		post.setParams("dataType", "roletostudent");
+		post.setParams("role", role);
 		SchoolApplication.getInstance().getRequestQueue().add(post);
 	}
 }

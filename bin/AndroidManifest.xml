@@ -50,9 +50,11 @@
         </activity>
         <activity android:name="com.example.school.MessageActivity" >
         </activity>
-        <activity android:name="com.example.school.AddNewMessActivity" >
+        <activity
+            android:name="com.example.school.AddNewMessActivity"
+            android:windowSoftInputMode="adjustResize" >
         </activity>
-        <activity android:name="com.example.school.ConnectionManActivity" >
+        <activity android:name="com.example.school.ConnectionManActivity2" >
         </activity>
         <activity
             android:name="com.example.school.FirstReadActivity"
