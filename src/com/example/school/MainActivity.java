@@ -221,7 +221,7 @@ public class MainActivity extends Activity implements OnClickListener,
 			}
 			break;
 		case R.id.l2:
-			Intent intent = new Intent(this, PagerListActivity.class);
+			Intent intent = new Intent(this, MessageActivity.class);
 			startActivity(intent);
 			break;
 		case R.id.l3:

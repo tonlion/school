@@ -48,6 +48,12 @@
         </activity>
         <activity android:name="com.example.school.ToolsActivity" >
         </activity>
+        <activity android:name="com.example.school.MessageActivity" >
+        </activity>
+        <activity android:name="com.example.school.AddNewMessActivity" >
+        </activity>
+        <activity android:name="com.example.school.ConnectionManActivity" >
+        </activity>
         <activity
             android:name="com.example.school.FirstReadActivity"
             android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen" >

@@ -38,5 +38,9 @@
     <string name="blgj">便利工具</string>
     <string name="collection">收藏</string>
     <string name="intent_to_main">稍后登录</string>
+    <string name="add_message">添加消息</string>
+    <string name="search">搜索</string>
+    <string name="send_mess">发送</string>
+    <string name="input">请输入......</string>
 
 </resources>
