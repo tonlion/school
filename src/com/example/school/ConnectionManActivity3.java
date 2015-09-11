@@ -20,9 +20,11 @@ import android.app.ActionBar;
 import android.app.ActionBar.LayoutParams;
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -126,7 +128,17 @@ public class ConnectionManActivity3 extends Activity implements
 			dialog = ProgressDialog.show(ConnectionManActivity3.this, "",
 					"数据加载中......");
 		}
+		dialog.setOnKeyListener(new DialogInterface.OnKeyListener() {
 
+			@Override
+			public boolean onKey(DialogInterface dialog, int keyCode,
+					KeyEvent event) {
+				if (keyCode == KeyEvent.KEYCODE_BACK) {
+					dialog.dismiss();
+				}
+				return false;
+			}
+		});
 		PostRequest post = new PostRequest(DataManager.ROOT_URL
 				+ "NewsPushServlet", new Listener<String>() {
 			List<Contection> list = new ArrayList<Contection>();
@@ -150,11 +162,11 @@ public class ConnectionManActivity3 extends Activity implements
 
 				}
 				if (list != null && list.size() > 0) {
-					c.setNodes(list);
 					contections.clear();
 					contections.addAll(list);
 					adapter.notifyDataSetChanged();
 					dialog.dismiss();
+					c.setNodes(list);
 				}
 			}
 		}, new ErrorListener() {
