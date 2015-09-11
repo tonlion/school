@@ -43,8 +43,8 @@ public class GsonValue {
 								new TypeToken<List<Major>>() {
 								}.getType());
 						for (Major c : list) {
-							contections.add(new Contection(c.getId(), c
-									.getName(), "major"));
+							// contections.add(new Contection(c.getId(), c
+							// .getName(), "major"));
 						}
 					}
 				}, new Response.ErrorListener() {
@@ -73,8 +73,9 @@ public class GsonValue {
 								new TypeToken<List<Clzss>>() {
 								}.getType());
 						for (Clzss clzss : list) {
-							contections.add(new Contection(clzss.getId(), clzss
-									.getClassName(), "class"));
+							// contections.add(new Contection(clzss.getId(),
+							// clzss
+							// .getClassName(), "class"));
 						}
 					}
 				}, new ErrorListener() {
@@ -104,8 +105,8 @@ public class GsonValue {
 								new TypeToken<List<Student>>() {
 								}.getType());
 						for (Student s : list) {
-							contections.add(new Contection(s.getClassNO(), s
-									.getClassName(), "student"));
+							// contections.add(new Contection(s.getClassNO(), s
+							// .getClassName(), "student"));
 						}
 					}
 				}, new ErrorListener() {
@@ -133,8 +134,8 @@ public class GsonValue {
 								new TypeToken<List<Role>>() {
 								}.getType());
 						for (Role s : list) {
-							contections.add(new Contection(1, s.getRole(),
-									"role"));
+							// contections.add(new Contection(1, s.getRole(),
+							// "role"));
 						}
 					}
 				}, new ErrorListener() {

@@ -3,23 +3,25 @@ package com.example.school;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import com.android.volley.Response;
 import com.android.volley.Response.Listener;
 import com.android.volley.VolleyError;
-import com.example.adapter.StudentAdapter;
-import com.example.adapter.StudentAdapter.OnSelectStudentListener;
+import com.example.adapter.CopyOfStudentAdapter;
+import com.example.adapter.CopyOfStudentAdapter.OnSelectStudentListener;
 import com.example.application.SchoolApplication;
 import com.example.data.DataManager;
-import com.example.entity.Student;
+import com.example.entity.Contection;
 import com.example.volley.PostRequest;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
 import android.app.Activity;
 import android.app.ActionBar.LayoutParams;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -35,12 +37,14 @@ public class AddNewMessActivity extends Activity implements OnClickListener,
 		OnSelectStudentListener {
 
 	private EditText searchMess;
-	@SuppressWarnings("unused")
 	private EditText sendMess;
-	private List<Student> students;
+	private List<Contection> students;
 	private ListView chooseList;
-	private StudentAdapter sAdapter;
-	List<Student> students2 = new ArrayList<Student>();
+	private CopyOfStudentAdapter sAdapter;
+	DisplayMetrics metrics;
+	private int sWidth;
+	private int sHeight;
+	List<Contection> students2 = new ArrayList<Contection>();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +60,17 @@ public class AddNewMessActivity extends Activity implements OnClickListener,
 		getActionBar().setTitle("新建消息");
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		getActionBar().setDisplayShowHomeEnabled(false);
+		// 将手机屏幕的属性赋值到metrics中
+		// 最好不要在oncreate中调用，因为没有绘制完成，所以坐标为0
+		metrics = new DisplayMetrics();
+		getWindowManager().getDefaultDisplay().getMetrics(metrics);
+		sHeight = metrics.heightPixels;
+		sWidth = metrics.widthPixels;
+		int[] position = new int[2];
+		sendMess.getLocationInWindow(position);
+		int messHeight = sendMess.getHeight();
+		int popHeight = sHeight - position[1] - messHeight;
+
 	}
 
 	@Override
@@ -70,8 +85,12 @@ public class AddNewMessActivity extends Activity implements OnClickListener,
 			 * startActivity(new Intent(getApplicationContext(),
 			 * ConnectionManActivity.class));
 			 */
-			startActivity(new Intent(getApplicationContext(),
-					ConnectionManActivity2.class));
+			/*
+			 * startActivity(new Intent(getApplicationContext(),
+			 * ConnectionManActivity2.class));
+			 */
+			startActivityForResult(new Intent(getApplicationContext(),
+					ConnectionManActivity3.class), 1);
 			break;
 		}
 		return super.onOptionsItemSelected(item);
@@ -95,25 +114,34 @@ public class AddNewMessActivity extends Activity implements OnClickListener,
 					LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
 			ListView lView = (ListView) v1.findViewById(R.id.c_listview);
 			// 联网查询符合的数据
-			students = new ArrayList<Student>();
-			sAdapter = new StudentAdapter(students, getApplicationContext());
+			students = new ArrayList<Contection>();
+			sAdapter = new CopyOfStudentAdapter(students,
+					getApplicationContext());
 			lView.setAdapter(sAdapter);
-			sAdapter.setListener(AddNewMessActivity.this);
+			sAdapter.setListener(this);
 			PostRequest post = new PostRequest(DataManager.ROOT_URL
 					+ "NewsPushServlet", new Listener<String>() {
 
 				@Override
 				public void onResponse(String arg0) {
-					Gson gson = new Gson();
-					List<Student> list = gson.fromJson(arg0,
-							new TypeToken<List<Student>>() {
-							}.getType());
+					List<Contection> list = new ArrayList<Contection>();
+					try {
+						JSONArray array = new JSONArray(arg0);
+						for (int i = 0; i < array.length(); i++) {
+							JSONObject obj = (JSONObject) array.get(i);
+							list.add(new Contection(obj.getString("uno"), obj
+									.getString("stuName"), Contection.STUDENT));
+						}
+					} catch (JSONException e) {
+						e.printStackTrace();
+					}
 					students.clear();
 					students.addAll(list);
 					sAdapter.notifyDataSetChanged();
 					window.setFocusable(true);
 					window.setOutsideTouchable(true);
 					window.setBackgroundDrawable(new ColorDrawable());
+					window.setAnimationStyle(R.style.popupstyle);
 					window.showAtLocation(v1, Gravity.BOTTOM, 0, 0);
 				}
 			}, new Response.ErrorListener() {
@@ -135,14 +163,28 @@ public class AddNewMessActivity extends Activity implements OnClickListener,
 	}
 
 	@Override
-	public void selectStudentListener(Student student, boolean isCheck) {
-		if (isCheck) {
+	public void selectStudentListener(Contection student) {
+		if (student.isChecked()) {
 			students2.add(student);
 		} else {
 			students2.remove(student);
 		}
-		sAdapter = new StudentAdapter(students2, getApplicationContext());
+		sAdapter = new CopyOfStudentAdapter(students2, getApplicationContext());
 		chooseList.setAdapter(sAdapter);
 	}
 
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		List<Contection> contections;
+		if (requestCode == 1 && resultCode == 2) {
+			contections = data.getParcelableArrayListExtra("types");
+			if (contections != null && contections.size() != 0) {
+				// students.addAll(contections);
+				CopyOfStudentAdapter adapter = new CopyOfStudentAdapter(
+						contections, getApplicationContext());
+				chooseList.setAdapter(adapter);
+			}
+		}
+	}
 }

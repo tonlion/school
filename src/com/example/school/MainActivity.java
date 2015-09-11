@@ -283,4 +283,5 @@ public class MainActivity extends Activity implements OnClickListener,
 		SchoolApplication.getInstance().getRequestQueue()
 				.add(allData.getClearNoticeData());
 	}
+	
 }
