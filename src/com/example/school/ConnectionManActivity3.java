@@ -19,6 +19,7 @@ import com.example.volley.PostRequest;
 import android.app.ActionBar;
 import android.app.ActionBar.LayoutParams;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -31,6 +32,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ConnectionManActivity3 extends Activity implements
 		OnItemClickListener, OnSelectStudentListener {
@@ -116,7 +118,15 @@ public class ConnectionManActivity3 extends Activity implements
 		SchoolApplication.getInstance().getRequestQueue().add(post);
 	}
 
+	private ProgressDialog dialog = null;
+
 	private PostRequest reLoadData(final Contection c) {
+
+		if (c.getType() != Contection.STUDENT) {
+			dialog = ProgressDialog.show(ConnectionManActivity3.this, "",
+					"数据加载中......");
+		}
+
 		PostRequest post = new PostRequest(DataManager.ROOT_URL
 				+ "NewsPushServlet", new Listener<String>() {
 			List<Contection> list = new ArrayList<Contection>();
@@ -144,12 +154,16 @@ public class ConnectionManActivity3 extends Activity implements
 					contections.clear();
 					contections.addAll(list);
 					adapter.notifyDataSetChanged();
+					dialog.dismiss();
 				}
 			}
 		}, new ErrorListener() {
 
 			@Override
 			public void onErrorResponse(VolleyError arg0) {
+				dialog.dismiss();
+				Toast.makeText(getApplicationContext(), "联网失败",
+						Toast.LENGTH_SHORT).show();
 			}
 		});
 		switch (c.getType()) {
