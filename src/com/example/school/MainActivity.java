@@ -2,6 +2,9 @@ package com.example.school;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
+
 import com.example.adapter.NoticeListAdapter;
 import com.example.adapter.TopicListAdapter;
 import com.example.adapter.ViewPagerAdapter;
@@ -27,6 +30,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -35,6 +39,7 @@ import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends Activity implements OnClickListener,
 		OnPageChangeListener, OnRefreshListener2<ListView> {
@@ -283,5 +288,32 @@ public class MainActivity extends Activity implements OnClickListener,
 		SchoolApplication.getInstance().getRequestQueue()
 				.add(allData.getClearNoticeData());
 	}
-	
+
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if (keyCode == KeyEvent.KEYCODE_BACK) {
+			exitByTwoClick();
+		}
+		return false;
+	}
+
+	private static Boolean isExit = false;
+
+	private void exitByTwoClick() {
+		Timer tExit = null;
+		if (isExit == false) {
+			isExit = true; // 准备退出
+			Toast.makeText(this, "再按一次退出程序", Toast.LENGTH_SHORT).show();
+			tExit = new Timer();
+			tExit.schedule(new TimerTask() {
+				@Override
+				public void run() {
+					isExit = false; // 取消退出
+				}
+			}, 1000); // 如果1秒钟内没有按下返回键，则启动定时器取消掉刚才执行的任务
+
+		} else {
+			finish();
+		}
+	}
 }
