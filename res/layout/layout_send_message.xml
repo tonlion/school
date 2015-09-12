@@ -14,6 +14,7 @@
         android:layout_marginBottom="5dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="5dp"
+        android:contentDescription="@string/app_name"
         android:src="@drawable/cc_contact_signle" />
 
     <CheckBox
@@ -30,7 +31,6 @@
         android:layout_marginLeft="10dp"
         android:layout_toLeftOf="@id/single_checked"
         android:layout_toRightOf="@id/contact_single"
-        android:gravity="center_vertical"
-        android:text="你好" />
+        android:gravity="center_vertical" />
 
 </RelativeLayout>

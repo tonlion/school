@@ -7,8 +7,10 @@ import com.example.entity.Student;
 import android.annotation.SuppressLint;
 import android.app.ActionBar.LayoutParams;
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -63,6 +65,26 @@ public class PersonInfoActivity extends Activity implements OnClickListener {
 						@Override
 						public void onClick(View v) {
 							window.dismiss();
+						}
+					});
+			view.findViewById(R.id.photo).setOnClickListener(
+					new OnClickListener() {
+						@Override
+						public void onClick(View v) {
+							startActivity(new Intent(
+									MediaStore.ACTION_IMAGE_CAPTURE));
+						}
+					});
+			view.findViewById(R.id.album).setOnClickListener(
+					new OnClickListener() {
+						@Override
+						public void onClick(View v) {
+							Intent intent = new Intent(
+									Intent.ACTION_GET_CONTENT);
+							intent.addCategory(Intent.CATEGORY_OPENABLE);
+							intent.setType("image/*");
+							intent.putExtra("return-data", true);
+							startActivity(intent);
 						}
 					});
 			window.setFocusable(true);

@@ -14,7 +14,7 @@ import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
-public class CopyOfStudentAdapter extends BaseAdapter {
+public class ContectionAdapter extends BaseAdapter {
 
 	private List<Contection> students;
 	private Context context;
@@ -24,7 +24,7 @@ public class CopyOfStudentAdapter extends BaseAdapter {
 		this.listener = listener;
 	}
 
-	public CopyOfStudentAdapter(List<Contection> students, Context context) {
+	public ContectionAdapter(List<Contection> students, Context context) {
 		super();
 		this.students = students;
 		this.context = context;
@@ -57,10 +57,10 @@ public class CopyOfStudentAdapter extends BaseAdapter {
 				|| c.getType() == Contection.ALL_ROLE) {
 			checked.setVisibility(IGNORE_ITEM_VIEW_TYPE);
 		}
-		if (checked.isChecked()) {
-			c.setChecked(true);
+		if (c.isChecked()) {
+			checked.setChecked(true);
 		} else {
-			c.setChecked(false);
+			checked.setChecked(false);
 		}
 		checked.setOnClickListener(new OnClickListener() {
 

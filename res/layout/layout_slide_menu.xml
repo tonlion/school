@@ -10,7 +10,7 @@
         android:id="@+id/l1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         android:gravity="center_horizontal"
         android:orientation="vertical" >
 
@@ -28,7 +28,7 @@
             android:layout_marginTop="10dp"
             android:gravity="center_horizontal"
             android:text="@string/p_login"
-            android:textSize="16sp" />
+            android:textSize="18sp" />
         <!-- 只是为了去掉警告 -->
 
         <TextView
@@ -40,7 +40,7 @@
         android:id="@+id/l2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/checked_background"
         android:gravity="center_horizontal"
         android:orientation="horizontal" >
@@ -57,7 +57,8 @@
             android:layout_height="40dp"
             android:layout_marginLeft="10dp"
             android:gravity="center_vertical"
-            android:text="@string/xxpt" />
+            android:text="@string/xxpt"
+            android:textSize="16sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -81,7 +82,8 @@
             android:layout_height="40dp"
             android:layout_marginLeft="10dp"
             android:gravity="center_vertical"
-            android:text="@string/xyhd" />
+            android:text="@string/xyhd"
+            android:textSize="16sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -105,7 +107,8 @@
             android:layout_height="40dp"
             android:layout_marginLeft="10dp"
             android:gravity="center_vertical"
-            android:text="@string/sxyl" />
+            android:text="@string/sxyl"
+            android:textSize="16sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -129,7 +132,8 @@
             android:layout_height="40dp"
             android:layout_marginLeft="10dp"
             android:gravity="center_vertical"
-            android:text="@string/jyzp" />
+            android:text="@string/jyzp"
+            android:textSize="16sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -153,7 +157,8 @@
             android:layout_height="40dp"
             android:layout_marginLeft="10dp"
             android:gravity="center_vertical"
-            android:text="@string/kycg" />
+            android:text="@string/kycg"
+            android:textSize="16sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -177,7 +182,8 @@
             android:layout_height="40dp"
             android:layout_marginLeft="10dp"
             android:gravity="center_vertical"
-            android:text="@string/blgj" />
+            android:text="@string/blgj"
+            android:textSize="16sp" />
     </LinearLayout>
 
 </LinearLayout>

@@ -54,7 +54,7 @@
             android:name="com.example.school.AddNewMessActivity"
             android:windowSoftInputMode="adjustResize" >
         </activity>
-        <activity android:name="com.example.school.ConnectionManActivity3" >
+        <activity android:name="com.example.school.ConnectionManActivity" >
         </activity>
         <activity
             android:name="com.example.school.FirstReadActivity"

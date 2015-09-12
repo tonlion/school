@@ -10,14 +10,15 @@ import org.json.JSONObject;
 import com.android.volley.Response;
 import com.android.volley.Response.Listener;
 import com.android.volley.VolleyError;
-import com.example.adapter.CopyOfStudentAdapter;
-import com.example.adapter.CopyOfStudentAdapter.OnSelectStudentListener;
+import com.example.adapter.ContectionAdapter;
+import com.example.adapter.ContectionAdapter.OnSelectStudentListener;
 import com.example.application.SchoolApplication;
 import com.example.data.DataManager;
 import com.example.entity.Contection;
 import com.example.volley.PostRequest;
 import android.app.Activity;
 import android.app.ActionBar.LayoutParams;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -40,21 +41,28 @@ public class AddNewMessActivity extends Activity implements OnClickListener,
 	private EditText sendMess;
 	private List<Contection> students;
 	private ListView chooseList;
-	private CopyOfStudentAdapter sAdapter;
+	private ContectionAdapter sAdapter;
+	private ContectionAdapter cAdapter;
 	DisplayMetrics metrics;
+	@SuppressWarnings("unused")
 	private int sWidth;
 	private int sHeight;
-	List<Contection> students2 = new ArrayList<Contection>();
+	private List<Contection> students2;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_add_new_mess);
-
+		students = new ArrayList<Contection>();
+		students2 = new ArrayList<Contection>();
+		sAdapter = new ContectionAdapter(students, getApplicationContext());
+		cAdapter = new ContectionAdapter(students2, getApplicationContext());
 		searchMess = (EditText) findViewById(R.id.search_mess);
 		sendMess = (EditText) findViewById(R.id.input_mess);
 		chooseList = (ListView) findViewById(R.id.choose_list);
+		// 点击搜索
 		findViewById(R.id.search_icon).setOnClickListener(this);
+		// 点击发送
 		findViewById(R.id.send_mess).setOnClickListener(this);
 		// 设置actionbar
 		getActionBar().setTitle("新建消息");
@@ -69,6 +77,7 @@ public class AddNewMessActivity extends Activity implements OnClickListener,
 		int[] position = new int[2];
 		sendMess.getLocationInWindow(position);
 		int messHeight = sendMess.getHeight();
+		@SuppressWarnings("unused")
 		int popHeight = sHeight - position[1] - messHeight;
 
 	}
@@ -81,16 +90,8 @@ public class AddNewMessActivity extends Activity implements OnClickListener,
 			break;
 		// 点击actionbar上的图标时
 		case R.id.find_person:
-			/*
-			 * startActivity(new Intent(getApplicationContext(),
-			 * ConnectionManActivity.class));
-			 */
-			/*
-			 * startActivity(new Intent(getApplicationContext(),
-			 * ConnectionManActivity2.class));
-			 */
 			startActivityForResult(new Intent(getApplicationContext(),
-					ConnectionManActivity3.class), 1);
+					ConnectionManActivity.class), 1);
 			break;
 		}
 		return super.onOptionsItemSelected(item);
@@ -113,12 +114,11 @@ public class AddNewMessActivity extends Activity implements OnClickListener,
 			final PopupWindow window = new PopupWindow(v1,
 					LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
 			ListView lView = (ListView) v1.findViewById(R.id.c_listview);
-			// 联网查询符合的数据
-			students = new ArrayList<Contection>();
-			sAdapter = new CopyOfStudentAdapter(students,
-					getApplicationContext());
+			// 联网查询符合的数据，popupwindiw中的数据
 			lView.setAdapter(sAdapter);
 			sAdapter.setListener(this);
+			final ProgressDialog dialog = ProgressDialog.show(this, "",
+					"数据加载中......");
 			PostRequest post = new PostRequest(DataManager.ROOT_URL
 					+ "NewsPushServlet", new Listener<String>() {
 
@@ -138,6 +138,8 @@ public class AddNewMessActivity extends Activity implements OnClickListener,
 					students.clear();
 					students.addAll(list);
 					sAdapter.notifyDataSetChanged();
+					dialog.dismiss();
+					// popupwindow
 					window.setFocusable(true);
 					window.setOutsideTouchable(true);
 					window.setBackgroundDrawable(new ColorDrawable());
@@ -169,8 +171,8 @@ public class AddNewMessActivity extends Activity implements OnClickListener,
 		} else {
 			students2.remove(student);
 		}
-		sAdapter = new CopyOfStudentAdapter(students2, getApplicationContext());
-		chooseList.setAdapter(sAdapter);
+
+		chooseList.setAdapter(cAdapter);
 	}
 
 	@Override
@@ -180,10 +182,13 @@ public class AddNewMessActivity extends Activity implements OnClickListener,
 		if (requestCode == 1 && resultCode == 2) {
 			contections = data.getParcelableArrayListExtra("types");
 			if (contections != null && contections.size() != 0) {
-				// students.addAll(contections);
-				CopyOfStudentAdapter adapter = new CopyOfStudentAdapter(
-						contections, getApplicationContext());
-				chooseList.setAdapter(adapter);
+				if (students2.size() != 0) {
+					students2.addAll(contections);
+					cAdapter.notifyDataSetChanged();
+				} else {
+					students2.addAll(contections);
+					chooseList.setAdapter(cAdapter);
+				}
 			}
 		}
 	}

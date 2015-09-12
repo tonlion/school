@@ -1,46 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
-    <string name="app_name">校园通</string>
+    <string name="app_name" translatable="false" tools:ignore="MissingTranslation">校园通</string>
     <string name="action_settings">Settings</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="login_name">请输入用户名</string>
-    <string name="login_pass">请输入密码</string>
-    <string name="rem_pass">记住密码</string>
-    <string name="login_myself">自动登录</string>
-    <string name="login_btn">登录</string>
-    <string name="topic">专题</string>
-    <string name="topic_list">专题内容</string>
-    <string name="more_topic">更多专题  >></string>
-    <string name="today_notice">今日动态</string>
-    <string name="more_notice">更多动态  >></string>
-    <string name="user_out">退出</string>
-    <string name="change_pass">密码修改</string>
-    <string name="person_collection">个人收藏</string>
-    <string name="versions">版本检测</string>
-    <string name="self_login">自动登录</string>
-    <string name="name">姓名</string>
-    <string name="sex">性别</string>
-    <string name="role">角色</string>
-    <string name="class_num">班级</string>
-    <string name="domain">专业</string>
-    <string name="faculty">院系</string>
-    <string name="college">学校</string>
-    <string name="null_in">空</string>
-    <string name="take_photo">拍照</string>
-    <string name="album">从相册选择</string>
-    <string name="p_login">请登录</string>
-    <string name="xxpt">消息平台</string>
-    <string name="xyhd">校园活动</string>
-    <string name="sxyl">思想引领</string>
-    <string name="jyzp">就业招聘</string>
-    <string name="kycg">考研出国</string>
-    <string name="blgj">便利工具</string>
-    <string name="collection">收藏</string>
-    <string name="intent_to_main">稍后登录</string>
-    <string name="add_message">添加消息</string>
-    <string name="search">搜索</string>
-    <string name="send_mess">发送</string>
-    <string name="input">请输入......</string>
+    <string name="hello_world" translatable="false">Hello world!</string>
+    <string name="login_name" translatable="false">请输入用户名</string>
+    <string name="login_pass" translatable="false">请输入密码</string>
+    <string name="rem_pass" translatable="false">记住密码</string>
+    <string name="login_myself" translatable="false">自动登录</string>
+    <string name="login_btn" translatable="false">登录</string>
+    <string name="topic" translatable="false">专题</string>
+    <string name="topic_list" translatable="false">专题内容</string>
+    <string name="more_topic" translatable="false">更多专题  >></string>
+    <string name="today_notice" translatable="false">今日动态</string>
+    <string name="more_notice" translatable="false">更多动态  >></string>
+    <string name="user_out" translatable="false">退出</string>
+    <string name="change_pass" translatable="false">密码修改</string>
+    <string name="person_collection" translatable="false">个人收藏</string>
+    <string name="versions" translatable="false">版本检测</string>
+    <string name="self_login" translatable="false">自动登录</string>
+    <string name="name" translatable="false">姓名</string>
+    <string name="sex" translatable="false">性别</string>
+    <string name="role" translatable="false">角色</string>
+    <string name="class_num" translatable="false">班级</string>
+    <string name="domain" translatable="false">专业</string>
+    <string name="faculty" translatable="false">院系</string>
+    <string name="college" translatable="false">学校</string>
+    <string name="null_in" translatable="false">空</string>
+    <string name="take_photo" translatable="false">拍照</string>
+    <string name="album" translatable="false">从相册选择</string>
+    <string name="p_login" translatable="false">请登录</string>
+    <string name="xxpt" translatable="false">消息平台</string>
+    <string name="xyhd" translatable="false">校园活动</string>
+    <string name="sxyl" translatable="false">思想引领</string>
+    <string name="jyzp" translatable="false">就业招聘</string>
+    <string name="kycg" translatable="false">考研出国</string>
+    <string name="blgj" translatable="false">便利工具</string>
+    <string name="collection" translatable="false">收藏</string>
+    <string name="intent_to_main" translatable="false">稍后登录</string>
+    <string name="add_message" translatable="false">添加消息</string>
+    <string name="search" translatable="false">搜索</string>
+    <string name="send_mess" translatable="false">发送</string>
+    <string name="input" translatable="false">请输入......</string>
 
 </resources>

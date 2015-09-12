@@ -227,7 +227,12 @@ public class MainActivity extends Activity implements OnClickListener,
 			break;
 		case R.id.l2:
 			Intent intent = new Intent(this, MessageActivity.class);
-			startActivity(intent);
+			if (student != null) {
+				startActivity(intent);
+			} else {
+				Toast.makeText(getApplicationContext(), "ÇëÏÈµÇÂ¼",
+						Toast.LENGTH_SHORT).show();
+			}
 			break;
 		case R.id.l3:
 			intent = new Intent(this, PagerListActivity.class);
