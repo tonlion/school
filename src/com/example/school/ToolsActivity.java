@@ -1,7 +1,10 @@
 package com.example.school;
 
+import com.example.data.DataManager;
+
 import android.app.ActionBar;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.MenuItem;
@@ -40,8 +43,11 @@ public class ToolsActivity extends Activity {
 		view.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Toast.makeText(ToolsActivity.this, "教务处", Toast.LENGTH_SHORT)
-						.show();
+				Intent i = new Intent(ToolsActivity.this,
+						WebContenterActivity.class);
+				i.putExtra("title", "教务处");
+				i.putExtra("url", DataManager.ROOT_URL + "login.html");
+				startActivity(i);
 			}
 		});
 		insert.addView(view, lp);

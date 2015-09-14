@@ -50,6 +50,10 @@
         </activity>
         <activity android:name="com.example.school.MessageActivity" >
         </activity>
+        <activity android:name="com.example.school.WebContenterActivity" >
+        </activity>
+        <activity android:name="com.example.school.CollectionActivity" >
+        </activity>
         <activity
             android:name="com.example.school.AddNewMessActivity"
             android:windowSoftInputMode="adjustResize" >

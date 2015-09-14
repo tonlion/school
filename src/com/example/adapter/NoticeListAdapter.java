@@ -81,6 +81,7 @@ public class NoticeListAdapter extends BaseAdapter {
 				R.drawable.cc_default_news_img,
 				R.drawable.cc_default_news_img_fail);
 		loader.get(url, listener);
+		// ImageLoaderUtils.display(url, holder.image);
 		holder.title.setText(notices.get(position).getTitle());
 		holder.createTime.setText(notices.get(position).getTime());
 		// 为添加的数据设置一个padding

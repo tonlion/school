@@ -26,6 +26,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 		db.execSQL(TableMessage.NoticeTable.createTable());
 		db.execSQL(TableMessage.StudentTable.createTable());
 		db.execSQL(TableMessage.TopicTable.createTable());
+		db.execSQL(TableMessage.CollectionTable.createTable());
 	}
 
 	@Override

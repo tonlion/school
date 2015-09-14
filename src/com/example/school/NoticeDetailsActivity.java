@@ -1,7 +1,10 @@
 package com.example.school;
 
+import com.example.application.SchoolApplication;
+import com.example.dao.CollectionDao;
 import com.example.data.DataManager;
 import com.example.entity.Notice;
+import com.example.entity.Student;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -19,6 +22,7 @@ public class NoticeDetailsActivity extends Activity {
 	private TextView title;
 	private TextView date;
 	private WebView content;
+	private Notice notice;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +33,7 @@ public class NoticeDetailsActivity extends Activity {
 		getActionBar().setTitle("动态详情");
 		getActionBar().setDisplayShowHomeEnabled(false);
 		Intent intent = getIntent();
-		Notice notice = (Notice) intent.getSerializableExtra("noticeSe");
+		notice = (Notice) intent.getSerializableExtra("noticeSe");
 		title = (TextView) findViewById(R.id.notice_details_title);
 		date = (TextView) findViewById(R.id.notice_details_date);
 		content = (WebView) findViewById(R.id.notice_details_content);
@@ -38,8 +42,8 @@ public class NoticeDetailsActivity extends Activity {
 		// 修改webview的默认属性
 		WebSettings settings = content.getSettings();
 		settings.setDefaultTextEncodingName("utf-8");
-		content.loadDataWithBaseURL(DataManager.IP_URL, notice.getContent(), "text/html",
-				"utf-8", null);
+		content.loadDataWithBaseURL(DataManager.IP_URL, notice.getContent(),
+				"text/html", "utf-8", null);
 		// 更改点击链接浏览器打开，修改默认行为
 		content.setWebViewClient(new WebViewClient());
 	}
@@ -54,7 +58,17 @@ public class NoticeDetailsActivity extends Activity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case R.id.action_settings:
-			Toast.makeText(this, "收藏成功", Toast.LENGTH_SHORT).show();
+			Student s = SchoolApplication.getInstance().getStudent();
+			CollectionDao dao = new CollectionDao(getApplicationContext());
+			try {
+				dao.addNotice(notice, s);
+				Toast.makeText(getApplicationContext(), "收藏成功",
+						Toast.LENGTH_SHORT).show();
+			} catch (Exception e) {
+				Toast.makeText(getApplicationContext(), "已经收藏了",
+						Toast.LENGTH_SHORT).show();
+			}
+
 			break;
 		case android.R.id.home:
 			finish();

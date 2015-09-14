@@ -78,6 +78,7 @@ public class TopicListAdapter extends BaseAdapter {
 				R.drawable.cc_default_news_img,
 				R.drawable.cc_default_news_img_fail);
 		loader.get(url, listener);
+		// ImageLoaderUtils.display(url, holeder.pic);
 		holeder.title.setText(topics.get(position).getSubject_title());
 		holeder.content.setText(topics.get(position).getSubject_date());
 		convertView.setOnClickListener(new OnClickListener() {

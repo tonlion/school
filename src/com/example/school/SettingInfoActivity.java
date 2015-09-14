@@ -41,6 +41,7 @@ public class SettingInfoActivity extends Activity implements OnClickListener {
 		// 为点击个人条目添加点击事件
 		findViewById(R.id.person_info).setOnClickListener(this);
 		findViewById(R.id.setting_change_pass).setOnClickListener(this);
+		findViewById(R.id.person_collection).setOnClickListener(this);
 		ImageView icon = (ImageView) findViewById(R.id.icon_switch);
 		icon.setOnClickListener(this);
 		sp = getSharedPreferences("stuInfo", MODE_PRIVATE);
@@ -99,6 +100,10 @@ public class SettingInfoActivity extends Activity implements OnClickListener {
 				// 结束进程
 				android.os.Process.killProcess(android.os.Process.myPid());
 			}
+			break;
+		case R.id.person_collection:
+			startActivity(new Intent(getApplicationContext(),
+					CollectionActivity.class));
 			break;
 		}
 	}

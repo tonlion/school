@@ -3,21 +3,25 @@ package com.example.application;
 import java.util.Stack;
 
 import android.app.Activity;
-import android.util.Log;
 
 public class ActivityManager {
 
 	private static ActivityManager instance;
 	private Stack<Activity> activityStack;
 
-	public ActivityManager() {
+	private ActivityManager() {
 		super();
 	}
 
 	// 单例模式
 	public static ActivityManager getInstance() {
 		if (instance == null) {
-			instance = new ActivityManager();
+			// 多线程时，防止
+			synchronized (ActivityManager.class) {
+				if (instance == null) {
+					instance = new ActivityManager();
+				}
+			}
 		}
 		return instance;
 	}
@@ -28,7 +32,7 @@ public class ActivityManager {
 			activityStack = new Stack<Activity>();
 		}
 		activityStack.add(activity);
-		Log.i("activityManager", "size=" + activityStack.size());
+		// Log.i("activityManager", "size=" + activityStack.size());
 	}
 
 	// 获取栈顶的activity，先进后出原则

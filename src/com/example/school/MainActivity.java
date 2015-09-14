@@ -145,6 +145,7 @@ public class MainActivity extends Activity implements OnClickListener,
 		if (student != null) {
 			MyAsyncTask task = new MyAsyncTask(stuImg);
 			task.execute(student.getImg());
+			// ImageLoaderUtils.display(student.getImg(), stuImg);
 			stuName.setText("Ñ§ºÅ£º" + student.getStuName());
 		}
 	}
