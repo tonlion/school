@@ -4,7 +4,7 @@ import java.io.File;
 
 import com.example.application.ActivityManager;
 import com.example.application.SchoolApplication;
-import com.example.async.MyAsyncTask;
+import com.example.data.ImageLoaderUtils;
 import com.example.entity.Student;
 
 import android.annotation.SuppressLint;
@@ -31,8 +31,9 @@ public class SettingInfoActivity extends Activity implements OnClickListener {
 		// 通过网络访问得到用户的基本信息，并设置用户的头像和基本信息
 		Student student = SchoolApplication.getInstance().getStudent();
 		ImageView header = (ImageView) findViewById(R.id.pheader);// 得到用户头像
-		MyAsyncTask task = new MyAsyncTask(header);
-		task.execute(student.getImg());
+		// MyAsyncTask task = new MyAsyncTask(header);
+		// task.execute(student.getImg());
+		ImageLoaderUtils.display(student.getImg(), header);
 		TextView name = (TextView) findViewById(R.id.pname);// 得到用户名
 		name.setText(student.getStuName());
 		TextView mess = (TextView) findViewById(R.id.pmess);// 得到用户的个性签名

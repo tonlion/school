@@ -37,7 +37,7 @@ public class SchoolApplication extends Application {
 				// 设置下载线程的执行器（线程池）
 				// .taskExecutor(SchoolImageCache.getInstance().getExecutors())
 				// 设置内存缓存的大小
-				.memoryCacheSize((int) Runtime.getRuntime().maxMemory() / 8)
+				// .memoryCacheSize((int) Runtime.getRuntime().maxMemory() / 8)
 				// 设置磁盘缓存大小
 				.diskCacheSize(50 * 1024 * 1024)
 				// 设置磁盘缓存文件的命名生成器

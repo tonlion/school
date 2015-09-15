@@ -7,14 +7,15 @@ import android.os.Environment;
 
 public class FileUitlity {
 
+	public final static String USER_HAED = "head";
 
-	public final static String USER_HAED="head";
-	
 	private static String ROOT_CACHE;
-	public static String ROOT_DIR="xyt";
+	public static String ROOT_DIR = "xyt";// 保存的根目录
 	private static FileUitlity instance = null;
+
 	private FileUitlity() {
 	}
+
 	public static FileUitlity getInstance(Context context) {
 		if (instance == null) {
 			if (Environment.getExternalStorageState().equals(
@@ -22,7 +23,8 @@ public class FileUitlity {
 				ROOT_CACHE = (Environment.getExternalStorageDirectory() + "/"
 						+ ROOT_DIR + "/");
 			} else {
-				ROOT_CACHE = (context.getFilesDir().getAbsolutePath() + "/"+ROOT_DIR+"/");
+				ROOT_CACHE = (context.getFilesDir().getAbsolutePath() + "/"
+						+ ROOT_DIR + "/");
 			}
 			File dir = new File(ROOT_CACHE);
 			if (!dir.exists()) {
@@ -33,7 +35,6 @@ public class FileUitlity {
 		return instance;
 	}
 
-	
 	public File makeDir(String dir) {
 		File fileDir = new File(ROOT_CACHE + dir);
 		if (fileDir.exists()) {
@@ -44,5 +45,4 @@ public class FileUitlity {
 		}
 	}
 
-	
 }

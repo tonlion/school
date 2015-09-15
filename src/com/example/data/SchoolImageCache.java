@@ -24,5 +24,4 @@ public class SchoolImageCache implements ImageCache {
 	public void putBitmap(String arg0, Bitmap arg1) {
 		this.cache.put(arg0, arg1);
 	}
-
 }

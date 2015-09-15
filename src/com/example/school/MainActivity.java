@@ -10,10 +10,10 @@ import com.example.adapter.TopicListAdapter;
 import com.example.adapter.ViewPagerAdapter;
 import com.example.application.ActivityManager;
 import com.example.application.SchoolApplication;
-import com.example.async.MyAsyncTask;
 import com.example.dao.NoticeDao;
 import com.example.dao.TopicDao;
 import com.example.data.DataManager;
+import com.example.data.ImageLoaderUtils;
 import com.example.entity.Notice;
 import com.example.entity.SlidingMenus;
 import com.example.entity.Student;
@@ -143,9 +143,9 @@ public class MainActivity extends Activity implements OnClickListener,
 		TextView stuName = (TextView) v.findViewById(R.id.stu_name);
 		// 当用户未登陆时
 		if (student != null) {
-			MyAsyncTask task = new MyAsyncTask(stuImg);
-			task.execute(student.getImg());
-			// ImageLoaderUtils.display(student.getImg(), stuImg);
+			// MyAsyncTask task = new MyAsyncTask(stuImg);
+			// task.execute(student.getImg());
+			ImageLoaderUtils.display(student.getImg(), stuImg);
 			stuName.setText("学号：" + student.getStuName());
 		}
 	}
