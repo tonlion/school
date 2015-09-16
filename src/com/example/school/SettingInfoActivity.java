@@ -2,22 +2,38 @@ package com.example.school;
 
 import java.io.File;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.Response.Listener;
+import com.android.volley.toolbox.StringRequest;
 import com.example.application.ActivityManager;
 import com.example.application.SchoolApplication;
+import com.example.data.DataManager;
 import com.example.data.ImageLoaderUtils;
 import com.example.entity.Student;
+import com.example.service.UpdateService;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class SettingInfoActivity extends Activity implements OnClickListener {
 	// private boolean flag;// 设置自动登录的图片转换
@@ -43,6 +59,7 @@ public class SettingInfoActivity extends Activity implements OnClickListener {
 		findViewById(R.id.person_info).setOnClickListener(this);
 		findViewById(R.id.setting_change_pass).setOnClickListener(this);
 		findViewById(R.id.person_collection).setOnClickListener(this);
+		findViewById(R.id.versions).setOnClickListener(this);
 		ImageView icon = (ImageView) findViewById(R.id.icon_switch);
 		icon.setOnClickListener(this);
 		sp = getSharedPreferences("stuInfo", MODE_PRIVATE);
@@ -106,6 +123,9 @@ public class SettingInfoActivity extends Activity implements OnClickListener {
 			startActivity(new Intent(getApplicationContext(),
 					CollectionActivity.class));
 			break;
+		case R.id.versions:
+			alertDialog();
+			break;
 		}
 	}
 
@@ -117,5 +137,72 @@ public class SettingInfoActivity extends Activity implements OnClickListener {
 			break;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+
+	public void alertDialog() {
+		final ProgressDialog dialog = ProgressDialog.show(this, "",
+				"联网检查中......");
+		StringRequest request = new StringRequest(DataManager.ROOT_URL + "apk",
+				new Listener<String>() {
+					@Override
+					public void onResponse(String arg0) {
+						try {
+							JSONObject jsonO = new JSONObject(arg0);
+							String url = jsonO.getString("url");
+							int vid = jsonO.getInt("vid");
+							PackageManager pManager = getPackageManager();
+							PackageInfo info = pManager.getPackageInfo(
+									"com.example.school", 0);
+							if (info.versionCode < vid) {
+								createDialog(url);
+							} else {
+								Toast.makeText(getApplicationContext(),
+										"已经是最新版了", Toast.LENGTH_SHORT).show();
+							}
+							dialog.dismiss();
+						} catch (JSONException e) {
+							e.printStackTrace();
+						} catch (NameNotFoundException e) {
+							e.printStackTrace();
+						}
+					}
+				}, new Response.ErrorListener() {
+
+					@Override
+					public void onErrorResponse(VolleyError arg0) {
+						Toast.makeText(getApplicationContext(), "联网失败",
+								Toast.LENGTH_SHORT).show();
+						dialog.dismiss();
+					}
+				});
+		SchoolApplication.getInstance().getRequestQueue().add(request);
+	}
+
+	public void createDialog(final String url) {
+		final AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+		dialog.setCancelable(false);
+		dialog.setTitle("友情提示");
+		View views = LayoutInflater.from(this).inflate(
+				R.layout.layout_alertdialog, null);
+		final AlertDialog alert = dialog.setView(views).create();
+		views.findViewById(R.id.ok).setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				Intent i = new Intent(SettingInfoActivity.this,
+						UpdateService.class);
+				i.putExtra("url", DataManager.ROOT_URL + url);
+				startService(i);
+				alert.dismiss();
+			}
+		});
+		views.findViewById(R.id.no).setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				alert.dismiss();
+			}
+		});
+		alert.show();
 	}
 }

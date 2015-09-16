@@ -5,14 +5,15 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.R.string;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
@@ -31,6 +32,7 @@ import android.widget.Toast;
 import com.android.volley.Response;
 import com.android.volley.Response.Listener;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.example.adapter.NoticeListAdapter;
 import com.example.adapter.TopicListAdapter;
 import com.example.adapter.ViewPagerAdapter;
@@ -45,7 +47,6 @@ import com.example.entity.SlidingMenus;
 import com.example.entity.Student;
 import com.example.entity.Topic;
 import com.example.service.UpdateService;
-import com.example.volley.PostRequest;
 import com.handmark.pulltorefresh.library.PullToRefreshBase;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.Mode;
 import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
@@ -85,17 +86,30 @@ public class MainActivity extends Activity implements OnClickListener,
 		// 压入栈
 		ActivityManager.getInstance().pushActivity(this);
 		// 创建alertdialog
-		PostRequest postRequest = new PostRequest(DataManager.ROOT_URL + "apk",
-				new Listener<String>() {
+		alertDialog();
+	}
 
+	/**
+	 * 联网检查数据
+	 */
+	public void alertDialog() {
+		StringRequest request = new StringRequest(DataManager.ROOT_URL + "apk",
+				new Listener<String>() {
 					@Override
 					public void onResponse(String arg0) {
 						try {
-							JSONArray jsonA = new JSONArray(arg0);
-							JSONObject jsonO = (JSONObject) jsonA.get(0);
+							JSONObject jsonO = new JSONObject(arg0);
 							String url = jsonO.getString("url");
 							int vid = jsonO.getInt("vid");
+							PackageManager pManager = getPackageManager();
+							PackageInfo info = pManager.getPackageInfo(
+									"com.example.school", 0);
+							if (info.versionCode < vid) {
+								createDialog(url);
+							}
 						} catch (JSONException e) {
+							e.printStackTrace();
+						} catch (NameNotFoundException e) {
 							e.printStackTrace();
 						}
 					}
@@ -103,13 +117,19 @@ public class MainActivity extends Activity implements OnClickListener,
 
 					@Override
 					public void onErrorResponse(VolleyError arg0) {
+						Toast.makeText(getApplicationContext(), "这里有错",
+								Toast.LENGTH_SHORT).show();
 					}
 				});
-		SchoolApplication.getInstance().getRequestQueue().add(postRequest);
-		createDialog();
+		SchoolApplication.getInstance().getRequestQueue().add(request);
 	}
 
-	private void createDialog() {
+	/**
+	 * 弹出dialog
+	 * 
+	 * @param url
+	 */
+	public void createDialog(final String url) {
 		final AlertDialog.Builder dialog = new AlertDialog.Builder(this);
 		dialog.setCancelable(false);
 		dialog.setTitle("友情提示");
@@ -121,7 +141,7 @@ public class MainActivity extends Activity implements OnClickListener,
 			@Override
 			public void onClick(View v) {
 				Intent i = new Intent(MainActivity.this, UpdateService.class);
-				i.putExtra("url", DataManager.ROOT_URL + "apk/cc.apk");
+				i.putExtra("url", DataManager.ROOT_URL + url);
 				startService(i);
 				alert.dismiss();
 			}

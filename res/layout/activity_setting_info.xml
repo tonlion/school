@@ -80,6 +80,7 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:text="@string/versions"
+        android:id="@+id/versions"
         android:textSize="16sp" />
 
     <RelativeLayout
