@@ -23,7 +23,7 @@ import com.handmark.pulltorefresh.library.PullToRefreshListView;
 
 public class DataManager {
 
-	public final static String IP_URL = "http://192.168.252.1/";// IP地址
+	public final static String IP_URL = "http://192.168.253.1/";// IP地址
 	public final static String ROOT_URL = IP_URL + "SchoolLife/";// 根目录
 	public final static String NEWSREQUEST_URL = ROOT_URL// 数据访问目录
 			+ "NewsRequestServlet";

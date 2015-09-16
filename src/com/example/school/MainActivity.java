@@ -5,26 +5,13 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import com.example.adapter.NoticeListAdapter;
-import com.example.adapter.TopicListAdapter;
-import com.example.adapter.ViewPagerAdapter;
-import com.example.application.ActivityManager;
-import com.example.application.SchoolApplication;
-import com.example.dao.NoticeDao;
-import com.example.dao.TopicDao;
-import com.example.data.DataManager;
-import com.example.data.ImageLoaderUtils;
-import com.example.entity.Notice;
-import com.example.entity.SlidingMenus;
-import com.example.entity.Student;
-import com.example.entity.Topic;
-import com.handmark.pulltorefresh.library.PullToRefreshBase;
-import com.handmark.pulltorefresh.library.PullToRefreshBase.Mode;
-import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
-import com.handmark.pulltorefresh.library.PullToRefreshListView;
-import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
+import android.R.string;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -40,6 +27,30 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.android.volley.Response;
+import com.android.volley.Response.Listener;
+import com.android.volley.VolleyError;
+import com.example.adapter.NoticeListAdapter;
+import com.example.adapter.TopicListAdapter;
+import com.example.adapter.ViewPagerAdapter;
+import com.example.application.ActivityManager;
+import com.example.application.SchoolApplication;
+import com.example.dao.NoticeDao;
+import com.example.dao.TopicDao;
+import com.example.data.DataManager;
+import com.example.data.ImageLoaderUtils;
+import com.example.entity.Notice;
+import com.example.entity.SlidingMenus;
+import com.example.entity.Student;
+import com.example.entity.Topic;
+import com.example.service.UpdateService;
+import com.example.volley.PostRequest;
+import com.handmark.pulltorefresh.library.PullToRefreshBase;
+import com.handmark.pulltorefresh.library.PullToRefreshBase.Mode;
+import com.handmark.pulltorefresh.library.PullToRefreshBase.OnRefreshListener2;
+import com.handmark.pulltorefresh.library.PullToRefreshListView;
+import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
 public class MainActivity extends Activity implements OnClickListener,
 		OnPageChangeListener, OnRefreshListener2<ListView> {
@@ -73,6 +84,56 @@ public class MainActivity extends Activity implements OnClickListener,
 		getActionBar().setDisplayShowHomeEnabled(false);
 		// 压入栈
 		ActivityManager.getInstance().pushActivity(this);
+		// 创建alertdialog
+		PostRequest postRequest = new PostRequest(DataManager.ROOT_URL + "apk",
+				new Listener<String>() {
+
+					@Override
+					public void onResponse(String arg0) {
+						try {
+							JSONArray jsonA = new JSONArray(arg0);
+							JSONObject jsonO = (JSONObject) jsonA.get(0);
+							String url = jsonO.getString("url");
+							int vid = jsonO.getInt("vid");
+						} catch (JSONException e) {
+							e.printStackTrace();
+						}
+					}
+				}, new Response.ErrorListener() {
+
+					@Override
+					public void onErrorResponse(VolleyError arg0) {
+					}
+				});
+		SchoolApplication.getInstance().getRequestQueue().add(postRequest);
+		createDialog();
+	}
+
+	private void createDialog() {
+		final AlertDialog.Builder dialog = new AlertDialog.Builder(this);
+		dialog.setCancelable(false);
+		dialog.setTitle("友情提示");
+		View views = LayoutInflater.from(this).inflate(
+				R.layout.layout_alertdialog, null);
+		final AlertDialog alert = dialog.setView(views).create();
+		views.findViewById(R.id.ok).setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				Intent i = new Intent(MainActivity.this, UpdateService.class);
+				i.putExtra("url", DataManager.ROOT_URL + "apk/cc.apk");
+				startService(i);
+				alert.dismiss();
+			}
+		});
+		views.findViewById(R.id.no).setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				alert.dismiss();
+			}
+		});
+		alert.show();
 	}
 
 	private void initTabMenus() {

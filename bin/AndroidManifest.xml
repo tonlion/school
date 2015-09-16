@@ -66,6 +66,9 @@
             android:name="com.example.school.FirstReadActivity"
             android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen" >
         </activity>
+
+        <service android:name="com.example.service.UpdateService" >
+        </service>
     </application>
 
 </manifest>
