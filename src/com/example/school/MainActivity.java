@@ -117,8 +117,6 @@ public class MainActivity extends Activity implements OnClickListener,
 
 					@Override
 					public void onErrorResponse(VolleyError arg0) {
-						Toast.makeText(getApplicationContext(), "’‚¿Ô”–¥Ì",
-								Toast.LENGTH_SHORT).show();
 					}
 				});
 		SchoolApplication.getInstance().getRequestQueue().add(request);

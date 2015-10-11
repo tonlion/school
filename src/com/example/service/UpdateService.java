@@ -11,6 +11,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import com.example.data.FileUitlity;
+import com.example.entity.ApplicationInfo;
 import com.example.school.R;
 
 import android.app.NotificationManager;
@@ -18,6 +19,9 @@ import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.net.Uri;
 import android.os.IBinder;
 import android.support.v4.app.NotificationCompat;
@@ -26,6 +30,7 @@ import android.support.v4.app.NotificationCompat.Builder;
 public class UpdateService extends Service {
 
 	private NotificationManager manager;
+	private String url;
 
 	@Override
 	public IBinder onBind(Intent intent) {
@@ -40,11 +45,12 @@ public class UpdateService extends Service {
 
 	@Override
 	public int onStartCommand(final Intent intent, int flags, int startId) {
+		url = intent.getStringExtra("url");
 		Thread thread = new Thread(new Runnable() {
 
 			@Override
 			public void run() {
-				downLoad(intent.getStringExtra("url"));
+				downLoad(url);
 				stopSelf();
 			}
 		});
@@ -56,7 +62,7 @@ public class UpdateService extends Service {
 		// 创建notification
 		NotificationCompat.Builder builder = new Builder(
 				getApplicationContext());
-		builder.setContentTitle("下载中......");
+		builder.setContentTitle("校园通");
 		builder.setProgress(100, progress, false);
 		builder.setSmallIcon(R.drawable.ic_launcher);
 		manager.notify(0, builder.build());
@@ -67,12 +73,15 @@ public class UpdateService extends Service {
 		// 创建notification
 		NotificationCompat.Builder builder = new Builder(
 				getApplicationContext());
-		builder.setContentTitle("下载完成");
+		builder.setContentTitle("校园通");
 		builder.setContentText("下载完成，点击安装");
 		Intent i = new Intent();
+		// 调用android安装程序，安装文件
 		i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		i.setAction(Intent.ACTION_VIEW);
-		i.setDataAndType(Uri.fromFile(new File("")),
+		File file = new File(FileUitlity.getInstance(getApplicationContext())
+				.makeDir("apk"), "cc.apk");
+		i.setDataAndType(Uri.fromFile(file),
 				"application/vnd.android.package-archive");
 		PendingIntent intent = PendingIntent.getActivity(
 				getApplicationContext(), 0, i,
@@ -125,6 +134,27 @@ public class UpdateService extends Service {
 			}
 		}
 		notificationFinish();
+	}
 
+	public ApplicationInfo getApkVersion(String urlStr) {
+		ApplicationInfo info = new ApplicationInfo();
+		info.setVersionCode(2);
+		info.setVersionName("2.0");
+		info.setVersionUrl("");
+		return info;
+	}
+
+	public boolean checkUpdate() {
+		ApplicationInfo info = getApkVersion("");
+		PackageManager manager = getPackageManager();
+		try {
+			PackageInfo info2 = manager.getPackageInfo("", 0);
+			if (info2.versionCode != info.getVersionCode()) {
+				return true;
+			}
+		} catch (NameNotFoundException e) {
+			e.printStackTrace();
+		}
+		return false;
 	}
 }
